@@ -26,7 +26,19 @@
   },
   "keywords": [
     "import",
-    "a-la"
+    "export",
+    "exports",
+    "module",
+    "default",
+    "require",
+    "a-la",
+    "regular expression",
+    "es6 modules",
+    "es6",
+    "modules",
+    "regex",
+    "es6",
+    "babel"
   ],
   "author": "Anton <anton@adc.sh>",
   "license": "MIT",
