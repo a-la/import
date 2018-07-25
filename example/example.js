@@ -3,7 +3,7 @@ import { Replaceable } from 'restream'
 import ALaImport from '../src'
 
 const STRING = `import aLaMode from 'alamode'
-import ALaImport from '@a-la/import'
+import ALaImport from "@a-la/import"
 import App from 'koa'
 `
 

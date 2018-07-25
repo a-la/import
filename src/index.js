@@ -1,27 +1,16 @@
 import { debuglog } from 'util'
+import ImportDefaultRule from './lib/default'
 
 const LOG = debuglog('@a-la/import')
 
 /**
- * A La Regex to transpile an import statement into require.
+ * A La Sequence to combine multiple rules from this package (such as `import defaultFn`, `import { namedFn }`, _etc_).
  */
-const ALaImportRe = /import ([\w\d]+) from '(.+?)'/gm
+const seq = [
+  ImportDefaultRule,
+]
 
-/**
- * A La Rule to use the regex for replacement.
- * @type {Rule}
- */
-const ALaImport = {
-  re: ALaImportRe,
-  replacement(match, name, src) {
-    const s = `const ${name} = require('${src}')`
-    return s
-  },
-}
+export default seq
 
-/**
- * @typedef {import('restream').Rule} Rule
- */
-
-export { ALaImportRe }
-export default ALaImport
+// export { default } from './lib/default'
+// export { ALaImportRe }
