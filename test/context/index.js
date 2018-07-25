@@ -2,15 +2,19 @@ import { resolve } from 'path'
 import { debuglog } from 'util'
 import { Replaceable } from 'restream'
 import Catchment from 'catchment'
+import mismatch from 'mismatch'
+import ImportDefaultRule, { ImportDefaultRe } from '../../src/lib/default'
 
 const LOG = debuglog('@a-la/import')
 
 const FIXTURE = resolve(__dirname, '../fixture')
 
+
+
 /**
  * A testing context for the package.
  */
-export default class Context {
+export default class ALaContext {
   async _init() {
     LOG('init context')
   }
@@ -48,6 +52,15 @@ export default class Context {
     })
     const res = await c.promise
     return res
+  }
+  get mismatch() {
+    return mismatch
+  }
+  get ImportDefaultRule() {
+    return ImportDefaultRule
+  }
+  get ImportDefaultRe() {
+    return ImportDefaultRe
   }
 }
 

@@ -1,46 +1,20 @@
-import { ok, deepEqual } from 'zoroaster/assert'
-import mismatch from 'mismatch'
-import Context from '../context'
-import { ALaImportRe } from '../../src'
+import SnapshotContext from 'snapshot-context'
+import ALaContext from '../context'
+import ALaImport from '../../src'
 
-/** @type {Object.<string, (c: Context)>} */
+/** @type {Object.<string, (c: ALaContext, s: SnapshotContext)>} */
 const T = {
-  context: Context,
-  'is a function'() {
-    ok(ALaImportRe instanceof RegExp)
-  },
-  'returns a correct import'() {
-    const p = 'ALaImport'
-    const src = '../src'
-    const s = `import ${p} from '${src}'`
-    const res = mismatch(ALaImportRe, s, ['p', 'src'])
-    deepEqual(res, [
-      {
-        p,
-        src,
-      },
-    ])
-  },
-  'returns 2 correct imports'() {
-    const p = 'ALaImport'
-    const src = '../src'
-    const p2 = `${p}2`
-    const src2 = `${src}2`
-    const s = `
-import ${p} from '${src}'
-import ${p2} from '${src2}'
+  context: [ALaContext, SnapshotContext],
+  async 'transforms using sequence API'({ stream, SNAPSHOT_DIR }, { setDir, test }) {
+    setDir(SNAPSHOT_DIR)
+    const STRING = `import aLaMode from 'alamode'
+import ALaImport from '@a-la/import'
+import App from 'koa'
 `
-    const res = mismatch(ALaImportRe, s, ['p', 'src'])
-    deepEqual(res, [
-      {
-        p,
-        src,
-      },
-      {
-        p: p2,
-        src: src2,
-      },
-    ])
+    const s = await stream([
+      ...ALaImport,
+    ], STRING)
+    await test('sequence.js', s.trim())
   },
 }
 
