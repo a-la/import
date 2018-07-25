@@ -12,15 +12,22 @@ yarn add -E @a-la/import
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
+  * [`ALaImport` Sequence](#alaimport-sequence)
+- [Rules](#rules)
   * [`Default` Rule](#default-rule)
+- [Copyright](#copyright)
 
 ## API
 
-The _ALaImport_ is the default export and an array containing a sequence of rules for [_Replaceable_](https://github.com/artdecocode/restream#replaceable-class). The rule set has multiple regexes and replacer functions to match all possible cases.
+The _ALaImport_ is the default export and an array containing a sequence of rules for [_Replaceable_](https://github.com/artdecocode/restream#replaceable-class).
 
 ```js
 import ALaImport from '@a-la/import'
 ```
+
+### `ALaImport` Sequence
+
+The rule set exported as an array by `ALaImport` has multiple regexes and replacer functions to match all possible cases.
 
 ```js
 /* yarn example/ */
@@ -50,29 +57,58 @@ const ALaImport = require("@a-la/import")
 const App = require('koa')
 ```
 
-> Each _Rule_ consists of a `re` and `replacement` properties.
+
+## Rules
+
+The replacement sequence consists of a number of rules, which produce the most reliable result when put together. See [`Rule Type` in documentary](https://github.com/artdecocode/restream#rule-type) for more info about how rules work.
 
 ### `Default` Rule
 
 Allows to import the default export.
 
+```js
+import helloWorld from 'hello-world'
+```
+
+<details>
+<summary>
+<em>Click to Show Details.</em></summary>
 <table>
+<tr></tr>
 <tr>
- <td>Example</td>
+ <td><strong>
+
+Example</strong></td>
  <td>
 
 ```js
-import ALaImport from 'testPackage'
+import examplePackage from 'examplePackage'
 ```
  </td>
 </tr>
+<tr></tr>
 <tr>
- <td>Rule</td>
+ <td><strong>
+
+RegExp</strong></td>
+ <td>
+
+```js
+/^\s*import ([\w\d]+) from (["'])(.+?)\2/gm
+```
+ </td>
+</tr>
+<tr></tr>
+
+<tr>
+ <td><strong>
+
+Rule</strong></td>
  <td>
 
 ```js
 const ImportDefaultRule = {
-  re: /import ([\w\d]+) from '(.+?)'/gm,
+  re: /^\s*import ([\w\d]+) from (["'])(.+?)\2/gm,
   replacement(match, name, src) {
     const s = `const ${name} = require('${src}')`
     return s
@@ -81,9 +117,24 @@ const ImportDefaultRule = {
 ```
  </td>
 </tr>
+
+<tr></tr>
+<tr>
+ <td><strong>
+
+Output</strong></td>
+ <td>
+
+```js
+const examplePackage = require('examplePackage')
+```
+ </td>
+</tr>
 </table>
 
----
+</details>
+
+## Copyright
 
 (c) [A La Mode][1] 2018
 

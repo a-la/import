@@ -1,5 +1,5 @@
 
----
+## Copyright
 
 (c) [A La Mode][1] 2018
 
