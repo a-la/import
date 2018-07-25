@@ -1,19 +1,30 @@
 
 ## API
 
-The package is available by importing its default function:
+The _ALaImport_ is the default export and a rule for [_Replaceable_](https://github.com/artdecocode/restream#replaceable-class). The regular expression is also exported as _ALaImportRe_.
 
 ```js
-import import from '@a-la/import'
+import ALaImport, { ALaImportRe } from '@a-la/import'
 ```
 
-```### import
+```### ALaImport => string
 [
-  ["arg1", "string"],
-  ["arg2?", "boolean"]
+  ["import_string", "string"]
 ]
 ```
 
-Call this function to get the result you want.
+The _Rule_ consists of a `re` and `replacement` properties.
 
-%EXAMPLE: example/example.js, ../src => @a-la/import%
+```js
+const rule = {
+  re: /import ([\w\d]+) from '(.+?)'/gm,
+  replacement(match, name, src) {
+    const s = `const ${name} = require('${src}')`
+    return s
+  },
+}
+```
+
+%EXAMPLE: example/example.js, ../src => @a-la/import, js%
+
+%FORK-js example example/example%

@@ -1,4 +1,4 @@
-/* yarn example */
+/* yarn example/ */
 import { Replaceable } from 'restream'
 import ALaImport from '../src'
 
