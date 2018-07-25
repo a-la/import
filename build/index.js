@@ -3,35 +3,22 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.ALaImportRe = void 0;
+exports.default = void 0;
 
 var _util = require("util");
 
+var _default2 = _interopRequireDefault(require("./lib/default"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const LOG = (0, _util.debuglog)('@a-la/import');
 /**
- * A La Regex to transpile an import statement into require.
+ * A La Sequence to combine multiple rules from this package (such as `import defaultFn`, `import { namedFn }`, _etc_).
  */
 
-const ALaImportRe = /import ([\w\d]+) from '(.+?)'/gm;
-/**
- * A La Rule to use the regex for replacement.
- * @type {Rule}
- */
+const seq = [_default2.default];
+var _default = seq; // export { default } from './lib/default'
+// export { ALaImportRe }
 
-exports.ALaImportRe = ALaImportRe;
-const ALaImport = {
-  re: ALaImportRe,
-
-  replacement(match, name, src) {
-    const s = `const ${name} = require('${src}')`;
-    return s;
-  }
-
-};
-/**
- * @typedef {import('restream').Rule} Rule
- */
-
-var _default = ALaImport;
 exports.default = _default;
 //# sourceMappingURL=index.js.map
