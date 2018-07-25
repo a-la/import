@@ -1,22 +1,45 @@
 
 ## API
 
-The _ALaImport_ is the default export and a rule for [_Replaceable_](https://github.com/artdecocode/restream#replaceable-class). The regular expression is also exported as _ALaImportRe_.
+The _ALaImport_ is the default export and an array containing a sequence of rules for [_Replaceable_](https://github.com/artdecocode/restream#replaceable-class). The rule set has multiple regexes and replacer functions to match all possible cases.
 
 ```js
-import ALaImport, { ALaImportRe } from '@a-la/import'
+import ALaImport from '@a-la/import'
 ```
 
+%EXAMPLE: example/example.js, ../src => @a-la/import, js%
+
+%FORK-js example example/example%
+
+<!--
 ```### ALaImport => string
 [
   ["import_string", "string"]
 ]
-```
+``` -->
 
-The _Rule_ consists of a `re` and `replacement` properties.
+> Each _Rule_ consists of a `re` and `replacement` properties.
+
+### `Default` Rule
+
+Allows to import the default export.
+
+<table>
+<tr>
+ <td>Example</td>
+ <td>
 
 ```js
-const rule = {
+import ALaImport from 'testPackage'
+```
+ </td>
+</tr>
+<tr>
+ <td>Rule</td>
+ <td>
+
+```js
+const ImportDefaultRule = {
   re: /import ([\w\d]+) from '(.+?)'/gm,
   replacement(match, name, src) {
     const s = `const ${name} = require('${src}')`
@@ -24,7 +47,6 @@ const rule = {
   },
 }
 ```
-
-%EXAMPLE: example/example.js, ../src => @a-la/import, js%
-
-%FORK-js example example/example%
+ </td>
+</tr>
+</table>
