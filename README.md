@@ -42,7 +42,7 @@ import { Replaceable } from 'restream'
 import ALaImport from '@a-la/import'
 
 const STRING = `import aLaMode from 'alamode'
-import ALaImport from '@a-la/import'
+import ALaImport from "@a-la/import"
 import App from 'koa'
 `
 
@@ -60,7 +60,7 @@ import App from 'koa'
 
 ```js
 const aLaMode = require('alamode')
-const ALaImport = require('@a-la/import')
+const ALaImport = require("@a-la/import")
 const App = require('koa')
 ```
 
