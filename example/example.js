@@ -8,9 +8,9 @@ import App from 'koa'
 `
 
 ;(async () => {
-  const stream = new Replaceable(
-    ALaImport,
-  )
+  const stream = new Replaceable([
+    ...ALaImport,
+  ])
   await new Promise((r, j) => {
     stream.end(STRING, r)
     stream.on('error', j)
