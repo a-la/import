@@ -8,21 +8,10 @@ const LOG = debuglog('@a-la/import')
 
 const FIXTURE = resolve(__dirname, '../fixture')
 
-
-
 /**
  * A testing context for the package.
  */
 export default class ALaContext {
-  async _init() {
-    LOG('init context')
-  }
-  /**
-   * Example method.
-   */
-  example() {
-    return 'OK'
-  }
   /**
    * Path to the fixture file.
    */
@@ -32,13 +21,10 @@ export default class ALaContext {
   get SNAPSHOT_DIR() {
     return resolve(__dirname, '../snapshot')
   }
-  async _destroy() {
-    LOG('destroy context')
-  }
   /**
    * Create a Replaceable stream with given rules.
    * @param {Rule[]} rules
-   * @param {string} text="test"
+   * @param {string} [text="test"]
    */
   async stream(rules, text = 'test') {
     const rs = new Replaceable(rules)

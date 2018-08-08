@@ -1,69 +1,35 @@
 import { equal } from 'zoroaster/assert'
+import { readFileSync } from 'fs'
+import { resolve } from 'path'
+import mismatch from 'mismatch'
+import erte from 'erte'
 import Context from '../../context'
 import namedRule from '../../../src/lib/named'
 
-/** @type {Object.<string, (c: Context)>} */
-const T = {
-  context: Context,
-  async 'transforms an import'({ stream }) {
-    const what = 'test'
-    const from = '@a-la/test'
-    const s = `import { ${what} } from '${from}'`
-    const r = await stream(namedRule, s)
-    equal(r, `const { ${what} } = require('${from}')`)
-  },
-  async 'transforms an import w/ default'({ stream }) {
-    const def = 'def'
-    const what = 'test'
-    const from = '@a-la/test'
-    const s = `import ${def}, { ${what} } from '${from}'`
-    const r = await stream(namedRule, s)
-    equal(r, `const ${def} = require('${from}')
-const { ${what} } = ${def}
-`)
-  },
-  async 'transforms an import w/ alias'({ stream }) {
-    const what = 'test'
-    const alias = 'alias'
-    const from = '@a-la/test'
-    const s = `import { ${what} as ${alias} } from '${from}'`
-    const r = await stream(namedRule, s)
-    equal(r, `const { ${what}: ${alias} } = require('${from}')`)
-  },
-  async 'transforms imports'({ stream }) {
-    const what = 'test, test2'
-    const from = '@a-la/test'
-    const s = `import { ${what} } from '${from}'`
-    const r = await stream(namedRule, s)
-    equal(r, `const { ${what} } = require('${from}')`)
-  },
-  async 'transforms imports w/ aliases'({ stream }) {
-    const what = 'test as alias, test2 as alias2'
-    const e = 'test: alias, test2: alias2'
-    const from = '@a-la/test'
-    const s = `import { ${what} } from '${from}'`
-    const r = await stream(namedRule, s)
-    equal(r, `const { ${e} } = require('${from}')`)
-  },
-  async 'transforms imports w/ some aliases'({ stream }) {
-    const what = 'test as alias, test2'
-    const e = 'test: alias, test2'
-    const from = '@a-la/test'
-    const s = `import { ${what} } from '${from}'`
-    const r = await stream(namedRule, s)
-    equal(r, `const { ${e} } = require('${from}')`)
-  },
-  async 'transforms imports w/ some aliases & default'({ stream }) {
-    const def = 'def'
-    const what = 'test as alias, test2'
-    const e = 'test: alias, test2'
-    const from = '@a-la/test'
-    const s = `import ${def}, { ${what} } from '${from}'`
-    const r = await stream(namedRule, s)
-    equal(r, `const ${def} = require('${from}')
-const { ${e} } = ${def}
-`)
-  },
-}
+const m = readFileSync(resolve(__dirname, 'named.mask'))
+const tests = mismatch(
+  /^\/\/ (.+?)\n([\s\S]+?)\n\n([\s\S]+?)\n\n/gm,
+  `${m}`,
+  ['name', 'input', 'expected'],
+)
 
-export default T
+const t = tests.reduce((acc, { name, input, expected }) => {
+  /** @param {Context} */
+  let ne
+  if (name in acc) ne = new Error(`repeated use of test name ${name}`)
+  const fn = async ({ stream }) => {
+    if (ne) throw ne
+    const r = await stream(namedRule, input)
+    try {
+      equal(r, expected)
+    } catch (err) {
+      const e = erte(r, expected)
+      console.log(e)
+      throw err
+    }
+  }
+  acc[name] = fn
+  return acc
+}, { context: Context })
+
+export default t
