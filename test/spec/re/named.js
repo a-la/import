@@ -9,9 +9,9 @@ const T = {
     ok(re instanceof RegExp)
   },
   'detects an import'({ mismatch }) {
-    const method = 'method'
+    const method = ' method '
     const src = '../src'
-    const s = `import { ${method} } from '${src}'`
+    const s = `import {${method}} from '${src}'`
     const res = mismatch(re, s, ['def', 'method', 'quotes', 'src'])
     deepEqual(res, [
       {
@@ -23,9 +23,9 @@ const T = {
   },
   'detects an import w/ default'({ mismatch }) {
     const def = 'default'
-    const method = 'method'
+    const method = ' method '
     const src = '../src'
-    const s = `import ${def}, { ${method} } from '${src}'`
+    const s = `import ${def}, {${method}} from '${src}'`
     const res = mismatch(re, s, ['def', 'method', 'quotes', 'src'])
     deepEqual(res, [
       {
@@ -37,9 +37,9 @@ const T = {
     ])
   },
   'detects an import w/ alias'({ mismatch }) {
-    const method = 'method as alias'
+    const method = ' method as alias '
     const src = '../src'
-    const s = `import { ${method} } from '${src}'`
+    const s = `import {${method}} from '${src}'`
     const res = mismatch(re, s, ['def', 'method', 'quotes', 'src'])
     deepEqual(res, [
       {
@@ -50,9 +50,9 @@ const T = {
     ])
   },
   'detects imports'({ mismatch }) {
-    const method = 'method, method2'
+    const method = ' method, method2 '
     const src = '../src'
-    const s = `import { ${method} } from '${src}'`
+    const s = `import {${method}} from '${src}'`
     const res = mismatch(re, s, ['def', 'method', 'quotes', 'src'])
     deepEqual(res, [
       {
@@ -63,9 +63,9 @@ const T = {
     ])
   },
   'detects imports w/ aliases'({ mismatch }) {
-    const method = 'method as alias, method2 as alias2'
+    const method = ' method as alias, method2 as alias2 '
     const src = '../src'
-    const s = `import { ${method} } from '${src}'`
+    const s = `import {${method}} from '${src}'`
     const res = mismatch(re, s, ['def', 'method', 'quotes', 'src'])
     deepEqual(res, [
       {
@@ -76,9 +76,9 @@ const T = {
     ])
   },
   'detects imports w/ some aliases (1)'({ mismatch }) {
-    const method = 'method, method2 as alias2'
+    const method = ' method, method2 as alias2 '
     const src = '../src'
-    const s = `import { ${method} } from '${src}'`
+    const s = `import {${method}} from '${src}'`
     const res = mismatch(re, s, ['def', 'method', 'quotes', 'src'])
     deepEqual(res, [
       {
@@ -89,9 +89,9 @@ const T = {
     ])
   },
   'detects imports w/ somae aliases (2)'({ mismatch }) {
-    const method = 'method as alias, method2'
+    const method = ' method as alias, method2 '
     const src = '../src'
-    const s = `import { ${method} } from '${src}'`
+    const s = `import {${method}} from '${src}'`
     const res = mismatch(re, s, ['def', 'method', 'quotes', 'src'])
     deepEqual(res, [
       {

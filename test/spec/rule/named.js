@@ -6,7 +6,7 @@ import erte from 'erte'
 import Context from '../../context'
 import namedRule from '../../../src/lib/named'
 
-const m = readFileSync(resolve(__dirname, 'named.mask'))
+const m = readFileSync(resolve(__dirname, '../../mask/named.mask'))
 const tests = mismatch(
   /^\/\/ (.+?)\n([\s\S]+?)\n\n([\s\S]+?)\n\n/gm,
   `${m}`,
