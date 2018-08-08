@@ -10,6 +10,8 @@ const T = {
     const STRING = `import aLaMode from 'alamode'
 import ALaImport from '@a-la/import'
 import App from 'koa'
+
+import { methodA, methodB } from '@a-la/named-import'
 `
     const s = await stream([
       ...ALaImport,

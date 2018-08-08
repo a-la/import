@@ -36,7 +36,7 @@ const T = {
       },
     ])
   },
-  'detects an import with alias'({ mismatch }) {
+  'detects an import w/ alias'({ mismatch }) {
     const method = 'method as alias'
     const src = '../src'
     const s = `import { ${method} } from '${src}'`
@@ -62,7 +62,7 @@ const T = {
       },
     ])
   },
-  'detects imports with aliases'({ mismatch }) {
+  'detects imports w/ aliases'({ mismatch }) {
     const method = 'method as alias, method2 as alias2'
     const src = '../src'
     const s = `import { ${method} } from '${src}'`
@@ -75,7 +75,7 @@ const T = {
       },
     ])
   },
-  'detects imports with optional aliases (1)'({ mismatch }) {
+  'detects imports w/ some aliases (1)'({ mismatch }) {
     const method = 'method, method2 as alias2'
     const src = '../src'
     const s = `import { ${method} } from '${src}'`
@@ -88,7 +88,7 @@ const T = {
       },
     ])
   },
-  'detects imports with optional aliases (2)'({ mismatch }) {
+  'detects imports w/ somae aliases (2)'({ mismatch }) {
     const method = 'method as alias, method2'
     const src = '../src'
     const s = `import { ${method} } from '${src}'`
