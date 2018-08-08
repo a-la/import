@@ -4,7 +4,7 @@
 
 `@a-la/import` is a a set of rules for [`alamode`](https://alamode.cc) to transpile an `import` statement into `require` in Node.js.
 
-_À La Mode_ is a RegExp-based transpiler which works faster than AST-based transpilers such as `@babel`, and occupies only 100KB of disk space.
+_À La Mode_ is a RegExp-based transpiler which works faster than AST-based transpilers such as `@babel`, and occupies only 10KB of disk space.
 
 ```sh
 yarn add -E @a-la/import
@@ -15,8 +15,7 @@ yarn add -E @a-la/import
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
   * [`ALaImport` Sequence](#alaimport-sequence)
-- [Rules](#rules)
-  * [`Default` Rule](#default-rule)
+- [Output Example](#output-example)
 - [Copyright](#copyright)
 
 ## API
@@ -60,84 +59,35 @@ const App = require('koa')
 ```
 
 
-## Rules
+## Output Example
 
-The replacement sequence consists of a number of rules, which produce the most reliable result when put together. See [`Rule Type` in documentary](https://github.com/artdecocode/restream#rule-type) for more info about how rules work.
-
-### `Default` Rule
-
-Allows to import the default export.
+The set of rules changes `import` to `require` statements.
 
 ```js
-import helloWorld from 'hello-world'
+import aLaMode from 'alamode'
+import scoreALaMode from "@a-la/import"
+
+import { methodA, methodB } from 'alamode'
+import { methodC, methodD as aliasD } from 'alamode'
+import defaultALaMode, {
+  methodE, methodF,
+} from 'alamode'
 ```
-
-<details>
-<summary>
-<em>Click to Show Details.</em></summary>
-<table>
-<tr></tr>
-<tr>
- <td><strong>
-
-Example</strong></td>
- <td>
 
 ```js
-import examplePackage from 'examplePackage'
+const aLaMode = require('alamode')
+const scoreALaMode = require("@a-la/import")
+
+const { methodA, methodB } = require('alamode')
+const { methodC, methodD: aliasD } = require('alamode')
+import defaultALaMode, {
+  methodE, methodF,
+} from 'alamode'
 ```
- </td>
-</tr>
-<tr></tr>
-<tr>
- <td><strong>
 
-RegExp</strong></td>
- <td>
-
-```js
-/^\s*import ([\w\d]+) from (["'])(.+?)\2/gm
-```
- </td>
-</tr>
-<tr></tr>
-
-<tr>
- <td><strong>
-
-Rule</strong></td>
- <td>
-
-```js
-const ImportDefaultRule = {
-  re: /^\s*import ([\w\d]+) from (["'])(.+?)\2/gm,
-  replacement(match, name, src) {
-    const s = `const ${name} = require('${src}')`
-    return s
-  },
-}
-```
- </td>
-</tr>
-
-<tr></tr>
-<tr>
- <td><strong>
-
-Output</strong></td>
- <td>
-
-```js
-const examplePackage = require('examplePackage')
-```
- </td>
-</tr>
-</table>
-
-</details>
 
 ## Copyright
 
-(c) [A La Mode][1] 2018
+(c) [À La Mode][1] 2018
 
 [1]: https://alamode.cc

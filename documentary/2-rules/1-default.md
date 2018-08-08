@@ -1,14 +1,14 @@
-
+<!--
 ### `Default` Rule
 
 Allows to import the default export.
 
 ```js
 import helloWorld from 'hello-world'
-```
+``` -->
 
 <!-- > Each _Rule_ consists of a `re` and `replacement` properties. -->
-<details>
+<!-- <details>
 <summary>
 <em>Click to Show Details.</em></summary>
 <table>
@@ -70,4 +70,4 @@ const examplePackage = require('examplePackage')
 </tr>
 </table>
 
-</details>
+</details> -->
