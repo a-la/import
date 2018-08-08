@@ -1,17 +1,18 @@
 import { ok, deepEqual } from 'zoroaster/assert'
 import Context from '../../context'
+import { re } from '../../../src/lib/default'
 
 /** @type {Object.<string, (c: Context)>} */
 const T = {
   context: Context,
-  'is a regular expression'({ ImportDefaultRe }) {
-    ok(ImportDefaultRe instanceof RegExp)
+  'is a regular expression'() {
+    ok(re instanceof RegExp)
   },
-  'returns a correct import'({ ImportDefaultRe, mismatch }) {
+  'returns a correct import'({ mismatch }) {
     const p = 'ALaImport'
     const src = '../src'
     const s = `import ${p} from '${src}'`
-    const res = mismatch(ImportDefaultRe, s, ['p', 'quotes', 'src'])
+    const res = mismatch(re, s, ['p', 'quotes', 'src'])
     deepEqual(res, [
       {
         p,
@@ -20,7 +21,7 @@ const T = {
       },
     ])
   },
-  'returns 2 correct imports'({ ImportDefaultRe, mismatch }) {
+  'returns 2 correct imports'({ mismatch }) {
     const p = 'ALaImport'
     const src = '../src'
     const p2 = `${p}2`
@@ -29,7 +30,7 @@ const T = {
 import ${p} from '${src}'
 import ${p2} from "${src2}"
 `
-    const res = mismatch(ImportDefaultRe, s, ['p', 'quotes', 'src'])
+    const res = mismatch(re, s, ['p', 'quotes', 'src'])
     deepEqual(res, [
       {
         quotes: '\'',

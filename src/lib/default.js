@@ -1,20 +1,16 @@
-const ImportDefaultRe = /^\s*import ([\w\d]+) from (["'])(.+?)\2/gm
+const re = /^\s*import ([\w\d]+) from (["'])(.+?)\2/gm
 
 /**
- * A La Rule to use the regex for replacement.
- * @type {Rule}
+ * A rule to replace `import method from 'package'` statement.
+ * @type {import('restream').Rule}
  */
-const ImportDefaultRule = {
-  re: ImportDefaultRe,
+const rule = {
+  re,
   replacement(match, name, quotes, src) {
     const s = `const ${name} = require(${quotes}${src}${quotes})`
     return s
   },
 }
 
-/**
- * @typedef {import('restream').Rule} Rule
- */
-
-export default ImportDefaultRule
-export { ImportDefaultRe }
+export default rule
+export { re }

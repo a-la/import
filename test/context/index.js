@@ -3,7 +3,6 @@ import { debuglog } from 'util'
 import { Replaceable } from 'restream'
 import Catchment from 'catchment'
 import mismatch from 'mismatch'
-import ImportDefaultRule, { ImportDefaultRe } from '../../src/lib/default'
 
 const LOG = debuglog('@a-la/import')
 
@@ -55,12 +54,6 @@ export default class ALaContext {
   }
   get mismatch() {
     return mismatch
-  }
-  get ImportDefaultRule() {
-    return ImportDefaultRule
-  }
-  get ImportDefaultRe() {
-    return ImportDefaultRe
   }
 }
 
