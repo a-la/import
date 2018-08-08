@@ -65,7 +65,7 @@ The set of rules changes `import` to `require` statements.
 
 ```js
 import aLaMode from 'alamode'
-import scoreALaMode from "@a-la/import"
+import scopeALaMode from "@a-la/import"
 
 import { methodA, methodB } from 'alamode'
 import { methodC, methodD as aliasD } from 'alamode'
@@ -76,13 +76,14 @@ import defaultALaMode, {
 
 ```js
 const aLaMode = require('alamode')
-const scoreALaMode = require("@a-la/import")
+const scopeALaMode = require("@a-la/import")
 
 const { methodA, methodB } = require('alamode')
 const { methodC, methodD: aliasD } = require('alamode')
-import defaultALaMode, {
+const defaultALaMode = require('alamode')
+const {
   methodE, methodF,
-} from 'alamode'
+} = defaultALaMode
 ```
 
 
