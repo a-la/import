@@ -9,6 +9,8 @@ var _util = require("util");
 
 var _default2 = _interopRequireDefault(require("./lib/default"));
 
+var _named = _interopRequireDefault(require("./lib/named"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const LOG = (0, _util.debuglog)('@a-la/import');
@@ -16,7 +18,7 @@ const LOG = (0, _util.debuglog)('@a-la/import');
  * A La Sequence to combine multiple rules from this package (such as `import defaultFn`, `import { namedFn }`, _etc_).
  */
 
-const seq = [_default2.default];
+const seq = [_default2.default, _named.default];
 var _default = seq; // export { default } from './lib/default'
 // export { ALaImportRe }
 

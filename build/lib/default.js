@@ -3,16 +3,16 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ImportDefaultRe = exports.default = void 0;
-const ImportDefaultRe = /^\s*import ([\w\d]+) from (["'])(.+?)\2/gm;
+exports.re = exports.default = void 0;
+const re = /^\s*import ([\w\d]+) from (["'])(.+?)\2/gm;
 /**
- * A La Rule to use the regex for replacement.
- * @type {Rule}
+ * A rule to replace `import method from 'package'` statement.
+ * @type {import('restream').Rule}
  */
 
-exports.ImportDefaultRe = ImportDefaultRe;
-const ImportDefaultRule = {
-  re: ImportDefaultRe,
+exports.re = re;
+const rule = {
+  re,
 
   replacement(match, name, quotes, src) {
     const s = `const ${name} = require(${quotes}${src}${quotes})`;
@@ -20,10 +20,6 @@ const ImportDefaultRule = {
   }
 
 };
-/**
- * @typedef {import('restream').Rule} Rule
- */
-
-var _default = ImportDefaultRule;
+var _default = rule;
 exports.default = _default;
 //# sourceMappingURL=default.js.map
