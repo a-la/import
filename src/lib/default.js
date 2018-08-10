@@ -1,3 +1,5 @@
+import { getDefault } from '.'
+
 const re = /^\s*import ([\w\d]+) from (["'])(.+?)\2/gm
 
 /**
@@ -7,7 +9,7 @@ const re = /^\s*import ([\w\d]+) from (["'])(.+?)\2/gm
 const rule = {
   re,
   replacement(match, name, quotes, src) {
-    const s = `const ${name} = require(${quotes}${src}${quotes})`
+    const s = getDefault(name, quotes, src)
     return s
   },
 }

@@ -1,6 +1,6 @@
-import { getRequire } from '.'
+import { getRequire, getDefault } from '.'
 
-const re = /^ *import\s*(?:([\w\d]+)\s*,)?\s*{((?:\s*[\w\d]+(?:\s*as\s*[\w\d]+)?\s*,?\s*)*)} from (["'])(.+?)\3/gm
+const re = /^ *import\s*(?:([\w\d]+)\s*,)?\s*{([^}]+)}\s+from (["'])(.+?)\3/gm
 
 /**
  * A rule to replace `import { method } from 'package'` statement.
@@ -8,16 +8,17 @@ const re = /^ *import\s*(?:([\w\d]+)\s*,)?\s*{((?:\s*[\w\d]+(?:\s*as\s*[\w\d]+)?
  */
 const rule = {
   re,
-  replacement(match, def, methods, quotes, src) {
+  replacement(match, def, named, quotes, src) {
     const r = getRequire(quotes, src)
-    const mm = methods.replace(
-      /([\w\d]+)(?:\s+as\s*([\w\d]+))?/g,
+    const mm = named.replace(
+      /(.+?)\s+as\s+(.+?)?/g,
       (_, name, alias) => {
         return alias ? `${name}: ${alias}` : name
       })
 
     if (def) {
-      const s = `const ${def} = ${r}
+      const d = getDefault(def, quotes, src)
+      const s = `${d}
 const {${mm}} = ${def}`
       return s
     } else {

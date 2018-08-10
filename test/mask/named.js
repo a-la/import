@@ -30,7 +30,7 @@ const { test } = require('@scope/test')
 import def, { test } from 'test'
 
 /*expected*/
-const def = require('test')
+let def = require('test'); if (def && def.__esModule) def = def.default
 const { test } = def
 /**/
 
@@ -45,7 +45,7 @@ const { test, test2 } = require('test')
 import def, { test, test2 } from 'test'
 
 /*expected*/
-const def = require('test')
+let def = require('test'); if (def && def.__esModule) def = def.default
 const { test, test2 } = def
 /**/
 
@@ -80,7 +80,7 @@ import def, {
 } from 'test'
 
 /*expected*/
-const def = require('test')
+let def = require('test'); if (def && def.__esModule) def = def.default
 const {
   test
 } = def
@@ -91,7 +91,7 @@ import def,
   { test } from 'test'
 
 /*expected*/
-const def = require('test')
+let def = require('test'); if (def && def.__esModule) def = def.default
 const { test } = def
 /**/
 
@@ -163,7 +163,7 @@ import def, {
 } from 'test'
 
 /*expected*/
-const def = require('test')
+let def = require('test'); if (def && def.__esModule) def = def.default
 const {
   test, test2,
   test3
