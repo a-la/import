@@ -54,9 +54,9 @@ import App from 'koa'
 ```
 
 ```js
-let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default
-let ALaImport = require("@a-la/import"); if (ALaImport && ALaImport.__esModule) ALaImport = ALaImport.default
-let App = require('koa'); if (App && App.__esModule) App = App.default
+let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default;
+let ALaImport = require("@a-la/import"); if (ALaImport && ALaImport.__esModule) ALaImport = ALaImport.default;
+let App = require('koa'); if (App && App.__esModule) App = App.default;
 ```
 
 
@@ -76,12 +76,12 @@ import defaultALaMode, {
 ```
 
 ```js
-let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default
-let scopeALaMode = require("@a-la/import"); if (scopeALaMode && scopeALaMode.__esModule) scopeALaMode = scopeALaMode.default
+let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default;
+let scopeALaMode = require("@a-la/import"); if (scopeALaMode && scopeALaMode.__esModule) scopeALaMode = scopeALaMode.default;
 
 const { methodA, methodB } = require('alamode')
 const { methodC, methodD: aliasD } = require('alamode')
-let defaultALaMode = require('alamode'); if (defaultALaMode && defaultALaMode.__esModule) defaultALaMode = defaultALaMode.default
+let defaultALaMode = require('alamode'); if (defaultALaMode && defaultALaMode.__esModule) defaultALaMode = defaultALaMode.default;
 const {
   methodE, methodF,
 } = defaultALaMode
