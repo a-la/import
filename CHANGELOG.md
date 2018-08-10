@@ -1,3 +1,10 @@
+## 11 August 2018
+
+### 1.2.0
+
+- [feature] Check if `__esModule`, and use a single RegExp.
+- [test] Mask testing.
+
 ## 10 August 2018
 
 ### 1.1.0
