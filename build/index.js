@@ -1,6 +1,5 @@
 const { debuglog } = require('util')
-const defaultRule = require('./lib/default')
-const namedRule = require('./lib/named')
+let namedRule = require('./lib/named'); if (namedRule && namedRule.__esModule) namedRule = namedRule.default;
 
 const LOG = debuglog('@a-la/import')
 
@@ -8,7 +7,6 @@ const LOG = debuglog('@a-la/import')
  * An À La Sequence to combine multiple rules from this package (such as `import defaultFn`, `import { namedFn }`, _etc_).
  */
 const seq = [
-  defaultRule,
   namedRule,
 ]
 
