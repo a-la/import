@@ -23,11 +23,15 @@ export default class ALaContext {
   }
   /**
    * Create a Replaceable stream with given rules.
-   * @param {Rule[]} rules
-   * @param {string} [text="test"]
+   * @param {Rule|Rule[]} rules
    */
-  async stream(rules, text = 'test') {
+  async stream(rules, text) {
+    if (!text) throw new Error('Input text is required.')
     const rs = new Replaceable(rules)
+    const events = []
+    rs.on('export', (name) => {
+      events.push(name)
+    })
     const c = new Catchment({
       rs,
     })
@@ -36,7 +40,7 @@ export default class ALaContext {
       rs.once('error', j)
     })
     const res = await c.promise
-    return res
+    return { events, res }
   }
   get mismatch() {
     return mismatch
