@@ -54,15 +54,15 @@ import App from 'koa'
 ```
 
 ```js
-const aLaMode = require('alamode')
-const ALaImport = require("@a-la/import")
-const App = require('koa')
+let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default
+let ALaImport = require("@a-la/import"); if (ALaImport && ALaImport.__esModule) ALaImport = ALaImport.default
+let App = require('koa'); if (App && App.__esModule) App = App.default
 ```
 
 
 ## Output Example
 
-The set of rules changes `import` to `require` statements.
+The set of rules changes `import` to `require` statements. When importing a default module, a check will be made to see if it was transpiled with `Babel` which is indicated by the presence of the `__esModule` property, and if it was, then the `default` property is reassinged to the variable.
 
 ```js
 import aLaMode from 'alamode'
@@ -76,12 +76,12 @@ import defaultALaMode, {
 ```
 
 ```js
-const aLaMode = require('alamode')
-const scopeALaMode = require("@a-la/import")
+let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default
+let scopeALaMode = require("@a-la/import"); if (scopeALaMode && scopeALaMode.__esModule) scopeALaMode = scopeALaMode.default
 
 const { methodA, methodB } = require('alamode')
 const { methodC, methodD: aliasD } = require('alamode')
-const defaultALaMode = require('alamode')
+let defaultALaMode = require('alamode'); if (defaultALaMode && defaultALaMode.__esModule) defaultALaMode = defaultALaMode.default
 const {
   methodE, methodF,
 } = defaultALaMode
