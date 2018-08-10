@@ -3,7 +3,7 @@ export const getRequire = (quotes, src) => {
 }
 
 export const getIfEsModule = (name) => {
-  const s = `if (${name} && ${name}.__esModule) ${name} = ${name}.default`
+  const s = `if (${name} && ${name}.__esModule) ${name} = ${name}.default;`
   return s
 }
 
