@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/lib/index.js"],"names":["getRequire","quotes","src"],"mappings":";;;;;;;AAAO,MAAMA,UAAU,GAAG,CAACC,MAAD,EAASC,GAAT,KAAiB;AACzC,SAAQ,WAAUD,MAAO,GAAEC,GAAI,GAAED,MAAO,GAAxC;AACD,CAFM","sourcesContent":["export const getRequire = (quotes, src) => {\n  return `require(${quotes}${src}${quotes})`\n}"],"file":"index.js"}
