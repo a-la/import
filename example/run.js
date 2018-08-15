@@ -3,7 +3,7 @@ import { Replaceable } from 'restream'
 import ALaImport from '../src'
 import { readFileSync } from 'fs'
 
-const STRING = readFileSync('example/imports.js')
+const STRING = readFileSync(process.argv[3] || 'example/imports.js')
 
 ;(async () => {
   const stream = new Replaceable([
