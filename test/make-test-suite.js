@@ -5,8 +5,12 @@ import Context from './context'
 const makeTestSuite = (tests, rule) => {
   const hasFocused = tests.some(({ name }) => name.startsWith('!'))
 
-  const t = tests.reduce((acc, { name, input, expected, expectedEvents }) => {
+  const t = tests.reduce((acc, { name, input, expected, expectedEvents, onError }) => {
     if (hasFocused && !name.startsWith('!')) return acc
+    // console.log('name: "%s"', name)
+    // console.log('input: "%s"', input)
+    // console.log('expected: "%s"', expected)
+    // console.log('expectedEvents: "%s"', expectedEvents)
     let ne
     if (name in acc) ne = new Error(`repeated use of test name ${name}`)
     const ee = expectedEvents ? JSON.parse(expectedEvents) : null
@@ -27,7 +31,13 @@ const makeTestSuite = (tests, rule) => {
       }
       if (ee) deepEqual(events, ee)
     }
-    acc[name] = fn
+    acc[name] = async (...args) => {
+      try {
+        await fn(...args)
+      } catch (err) {
+        onError(err)
+      }
+    }
     return acc
   }, { context: Context })
   return t

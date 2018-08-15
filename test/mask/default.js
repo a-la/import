@@ -1,13 +1,13 @@
 // single quotes
 import test from 'test'
 
-/*expected*/
+/* expected */
 let test = require('test'); if (test && test.__esModule) test = test.default;
 /**/
 
 // double quotes
 import test from "test"
 
-/*expected*/
+/* expected */
 let test = require("test"); if (test && test.__esModule) test = test.default;
 /**/

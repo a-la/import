@@ -1,65 +1,63 @@
 // standard
 import { test } from 'test'
 
-/*expected*/
+/* expected */
 const { test } = require('test')
 /**/
 
 // standard with alias
 import {test as alias} from 'test'
 
-/*expected*/
+/* expected */
 const {test: alias} = require('test')
 /**/
 
 // standard with double quotes
 import { test } from "test"
 
-/*expected*/
+/* expected */
 const { test } = require("test")
 /**/
 
 // standard with scope
 import { test } from '@scope/test'
 
-/*expected*/
+/* expected */
 const { test } = require('@scope/test')
 /**/
 
 // standard wit default
 import def, { test } from 'test'
 
-/*expected*/
-let def = require('test'); if (def && def.__esModule) def = def.default;
-const { test } = def
+/* expected */
+let def = require('test'); if (def && def.__esModule) def = def.default; const { test } = def
 /**/
 
 // multiple
 import { test, test2 } from 'test'
 
-/*expected*/
+/* expected */
 const { test, test2 } = require('test')
 /**/
 
 // multiple with default
 import def, { test, test2 } from 'test'
 
-/*expected*/
-let def = require('test'); if (def && def.__esModule) def = def.default;
-const { test, test2 } = def
+/* expected */
+let def = require('test'); if (def && def.__esModule) def = def.default; const { test, test2 } = def
 /**/
 
 // multiple with aliases
 import { test as alias, test2 as alias2 } from 'test'
 
-/*expected*/
+/* expected */
 const { test: alias, test2: alias2 } = require('test')
 /**/
 
 // multiple with optional aliases
 import { test,  test2 as alias2 } from 'test'
 
-/*expected*/
+/* expected */
 const { test,  test2: alias2 } = require('test')
 /**/
 
@@ -68,7 +66,7 @@ import {
   test
 } from 'test'
 
-/*expected*/
+/* expected */
 const {
   test
 } = require('test')
@@ -79,9 +77,8 @@ import def, {
   test
 } from 'test'
 
-/*expected*/
-let def = require('test'); if (def && def.__esModule) def = def.default;
-const {
+/* expected */
+let def = require('test'); if (def && def.__esModule) def = def.default; const {
   test
 } = def
 /**/
@@ -90,9 +87,9 @@ const {
 import def,
   { test } from 'test'
 
-/*expected*/
-let def = require('test'); if (def && def.__esModule) def = def.default;
-const { test } = def
+/* expected */
+let def = require('test'); if (def && def.__esModule) def = def.default; const
+  { test } = def
 /**/
 
 // new line with commas
@@ -100,7 +97,7 @@ import {
   test,
 } from 'test'
 
-/*expected*/
+/* expected */
 const {
   test,
 } = require('test')
@@ -112,7 +109,7 @@ import {
   test2,
 } from 'test'
 
-/*expected*/
+/* expected */
 const {
   test,
   test2,
@@ -125,7 +122,7 @@ import {
     test2
 } from 'test'
 
-/*expected*/
+/* expected */
 const {
   test,
     test2
@@ -137,7 +134,7 @@ import {
   test, test2
 } from 'test'
 
-/*expected*/
+/* expected */
 const {
   test, test2
 } = require('test')
@@ -149,7 +146,7 @@ import {
   test3
 } from 'test'
 
-/*expected*/
+/* expected */
 const {
   test, test2,
   test3
@@ -162,9 +159,8 @@ import def, {
   test3
 } from 'test'
 
-/*expected*/
-let def = require('test'); if (def && def.__esModule) def = def.default;
-const {
+/* expected */
+let def = require('test'); if (def && def.__esModule) def = def.default; const {
   test, test2,
   test3
 } = def
