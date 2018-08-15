@@ -17,6 +17,8 @@ yarn add -E @a-la/import
   * [`ALaImport` Sequence](#alaimport-sequence)
 - [Output Example](#output-example)
 - [Lines Preservation](#lines-preservation)
+  * [Named Imports](#named-imports)
+  * [Named & Default](#named--default)
 - [Checklist](#checklist)
 - [Copyright](#copyright)
 
@@ -92,9 +94,29 @@ let defaultALaMode = require('alamode'); if (defaultALaMode && defaultALaMode.__
 
 The transform will attempt to preserve lines as they are for easier generation of source maps by `alamode`. In future, this might change.
 
+### Named Imports
+
+The named imports are only changed to replace `as` into `:`, otherwise the destructuring syntax is the same as for imports themselves.
+
 ```js
-import def, { test,
-  test2,
+import { test, test2,
+  test3 as alias3 }
+from 'package'
+```
+
+```js
+const { test, test2,
+  test3: alias3 }
+= require('package')
+```
+
+### Named & Default
+
+When there is a default import along with named once, the line numbers will be respected.
+
+```js
+import def, {
+  test, test2,
   test3 as alias3,
   test4
     as
@@ -105,8 +127,8 @@ import def, { test,
 ```
 
 ```js
-let def = require('package'); if (def && def.__esModule) def = def.default; const { test,
-  test2,
+let def = require('package'); if (def && def.__esModule) def = def.default; const {
+  test, test2,
   test3: alias3,
   test4
     :
