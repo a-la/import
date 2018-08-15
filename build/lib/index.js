@@ -7,10 +7,10 @@ const getIfEsModule = (name) => {
   return s
 }
 
-const getDefault = (name, quotes, src) => {
-  const r = getRequire(quotes, src)
+const getDefault = (name, req) => {
+  if (!name) return
   const i = getIfEsModule(name)
-  const s = `let ${name} = ${r}; ${i}`
+  const s = `${name} = ${req}; ${i}`
   return s
 }
 
