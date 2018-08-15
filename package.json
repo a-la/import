@@ -1,7 +1,7 @@
 {
   "name": "@a-la/import",
   "version": "1.2.0",
-  "description": "A La Regex to transpile an import statement into require.",
+  "description": "À La Regex to transpile an import statement into require.",
   "main": "build",
   "scripts": {
     "t": "zoroaster -b",
@@ -26,8 +26,11 @@
   },
   "keywords": [
     "import",
+    "imports",
     "export",
     "exports",
+    "ECMAscript",
+    "ecma",
     "module",
     "default",
     "require",
@@ -35,9 +38,14 @@
     "regular expression",
     "es6 modules",
     "es6",
+    "CommonJS",
+    "cjs",
+    "transpile",
+    "transpiler",
+    "compile",
+    "compiler",
     "modules",
     "regex",
-    "es6",
     "babel"
   ],
   "author": "Anton <anton@adc.sh>",
