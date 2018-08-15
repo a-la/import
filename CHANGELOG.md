@@ -1,3 +1,10 @@
+## 15 August 2018
+
+### 1.3.0
+
+- [feature] Preserve lines.
+- [dep] Update to `zoroaster@2.2` for mask testing.
+
 ## 11 August 2018
 
 ### 1.2.0
