@@ -2,7 +2,6 @@ import { resolve } from 'path'
 import { debuglog } from 'util'
 import { Replaceable } from 'restream'
 import Catchment from 'catchment'
-import mismatch from 'mismatch'
 
 const LOG = debuglog('@a-la/import')
 
@@ -41,9 +40,6 @@ export default class ALaContext {
     })
     const res = await c.promise
     return { events, res }
-  }
-  get mismatch() {
-    return mismatch
   }
 }
 
