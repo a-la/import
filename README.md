@@ -81,8 +81,7 @@ let scopeALaMode = require("@a-la/import"); if (scopeALaMode && scopeALaMode.__e
 
 const { methodA, methodB } = require('alamode')
 const { methodC, methodD: aliasD } = require('alamode')
-let defaultALaMode = require('alamode'); if (defaultALaMode && defaultALaMode.__esModule) defaultALaMode = defaultALaMode.default;
-const {
+let defaultALaMode = require('alamode'); if (defaultALaMode && defaultALaMode.__esModule) defaultALaMode = defaultALaMode.default; const {
   methodE, methodF,
 } = defaultALaMode
 ```
