@@ -15,7 +15,7 @@
     "e": "node example",
     "example/": "yarn e example/example.js",
     "build": "yarn-s b doc",
-    "b": "b --source-maps"
+    "b": "alamode src -o build"
   },
   "files": [
     "build"
