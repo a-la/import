@@ -1,11 +1,11 @@
 import { resolve } from 'path'
 import { getTests } from 'zoroaster'
 import makeTestSuite from '../make-test-suite'
-import namedRule from '../../src/lib/named'
+import importsSeq from '../../src'
 
-const path = resolve(__dirname, '../mask/default.js')
+const path = resolve(__dirname, '../mask/integration.js')
 const tests = getTests(path)
 
-const t = makeTestSuite(tests, namedRule)
+const t = makeTestSuite(tests, importsSeq)
 
 export default t
