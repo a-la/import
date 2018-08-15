@@ -12,9 +12,9 @@ argufy@1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/argufy/-/argufy-1.1.2.tgz#e99107e00e84b6272bedc0b9a93e42014edd5a72"
 
-assert-diff@1.2.6:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/assert-diff/-/assert-diff-1.2.6.tgz#1b44d6f24a7e3018f557768ee350ae9a732c2fc6"
+assert-diff@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/assert-diff/-/assert-diff-2.0.3.tgz#f7a5ab51f8da1bf2dbc9afd3f0b9ea6919808a74"
   dependencies:
     assert-plus "1.0.0"
     json-diff "0.5.2"
@@ -128,9 +128,9 @@ makepromise@2.0.0:
   dependencies:
     erotic "1.0.1"
 
-mismatch@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/mismatch/-/mismatch-1.0.1.tgz#edf28129b34cfc94f009d0619894dc03237006ed"
+mismatch@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/mismatch/-/mismatch-1.0.2.tgz#80262a922a420b7ace005195ee14508787d9072f"
 
 pedantry@1.0.1:
   version "1.0.1"
@@ -146,9 +146,9 @@ restream@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/restream/-/restream-2.1.0.tgz#934e177343e81bd6a64fc555f91085544da56db1"
 
-restream@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/restream/-/restream-3.0.0.tgz#39c07a3f4bc70979e5804135b0822001c9bb6322"
+restream@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/restream/-/restream-3.1.0.tgz#4245024bcb7cdcc0a63b1676ab1bbded24062a10"
 
 spawncommand@1.1.0:
   version "1.1.0"
@@ -172,14 +172,15 @@ yarn-s@1.1.0:
   dependencies:
     spawncommand "1.1.0"
 
-zoroaster@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/zoroaster/-/zoroaster-2.1.0.tgz#93e698ae87be2c5ff7dcbf305abec75058561ada"
+zoroaster@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/zoroaster/-/zoroaster-2.2.0.tgz#64d762accc1362fb1c8d47299b3c1ddce2a55d6f"
   dependencies:
-    assert-diff "1.2.6"
+    assert-diff "2.0.3"
     assert-throws "2.1.0"
-    catchment "2.0.1"
+    catchment "3.0.0"
     clean-stack "1.3.0"
+    mismatch "1.0.2"
     promto "1.0.1"
     spawncommand "2.0.1"
     yarn-s "1.1.0"
