@@ -47,6 +47,7 @@
   },
   "homepage": "https://github.com/a-la/import#readme",
   "devDependencies": {
+    "alamode": "1.1.0",
     "catchment": "3.0.0",
     "documentary": "1.10.0",
     "erte": "1.1.4",
