@@ -1,5 +1,5 @@
 import { debuglog } from 'util'
-import rule from './lib/named'
+import rule from './lib/rule'
 
 const LOG = debuglog('@a-la/import')
 
