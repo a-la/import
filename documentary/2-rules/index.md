@@ -5,7 +5,7 @@ The set of rules changes `import` to `require` statements. When importing a defa
 
 %EXAMPLE: example/imports.js%
 
-%FORK-js example example/run-imports%
+%FORK-js example example/run%
 
 <!-- ## Rules
 

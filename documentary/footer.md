@@ -1,4 +1,12 @@
 
+## Lines Preservation
+
+The transform will attempt to preserve lines as they are for easier generation of source maps by `alamode`. In future, this might change.
+
+%EXAMPLE: example/lines.js%
+
+%FORK-js example example/run example/lines.js%
+
 ## Checklist
 
 - [x] `import defaultExport from "module-name"`

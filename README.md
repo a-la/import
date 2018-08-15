@@ -16,6 +16,7 @@ yarn add -E @a-la/import
 - [API](#api)
   * [`ALaImport` Sequence](#alaimport-sequence)
 - [Output Example](#output-example)
+- [Lines Preservation](#lines-preservation)
 - [Checklist](#checklist)
 - [Copyright](#copyright)
 
@@ -86,6 +87,34 @@ let defaultALaMode = require('alamode'); if (defaultALaMode && defaultALaMode.__
 } = defaultALaMode
 ```
 
+
+## Lines Preservation
+
+The transform will attempt to preserve lines as they are for easier generation of source maps by `alamode`. In future, this might change.
+
+```js
+import def, { test,
+  test2,
+  test3 as alias3,
+  test4
+    as
+  alias4,
+}
+  from
+  'package'
+```
+
+```js
+let def = require('package'); if (def && def.__esModule) def = def.default; const { test,
+  test2,
+  test3: alias3,
+  test4
+    :
+  alias4,
+}
+  =
+  def
+```
 
 ## Checklist
 
