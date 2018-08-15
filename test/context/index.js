@@ -31,14 +31,11 @@ export default class ALaContext {
     rs.on('export', (name) => {
       events.push(name)
     })
-    const c = new Catchment({
+    const { promise } = new Catchment({
       rs,
     })
-    await new Promise((r, j) => {
-      rs.end(text, r)
-      rs.once('error', j)
-    })
-    const res = await c.promise
+    rs.end(text)
+    const res = await promise
     return { events, res }
   }
 }
