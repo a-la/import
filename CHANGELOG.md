@@ -1,3 +1,9 @@
+## 18 August 2018
+
+### 1.3.1
+
+- [tests] Set up tests using `zoroaster@2.3`'s ``makeTestSuite` function.
+
 ## 15 August 2018
 
 ### 1.3.0
