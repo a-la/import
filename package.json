@@ -55,6 +55,7 @@
   },
   "homepage": "https://github.com/a-la/import#readme",
   "devDependencies": {
+    "@a-la/context": "1.0.0",
     "alamode": "1.1.0",
     "catchment": "3.0.0",
     "documentary": "1.10.0",

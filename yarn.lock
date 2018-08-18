@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@a-la/context@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@a-la/context/-/context-1.0.0.tgz#31c28ce3b227b03813617f6f65ac4c9fd23a3865"
+  dependencies:
+    catchment "3.0.0"
+    restream "3.1.0"
+
 "@a-la/export@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@a-la/export/-/export-1.0.0.tgz#0e67e97faee98763136021c4cdf59c8aa6cf7241"
