@@ -1,11 +1,11 @@
 import { resolve } from 'path'
-import { getTests } from 'zoroaster'
-import makeTestSuite from '../make-test-suite'
+import { makeTestSuite } from 'zoroaster'
+import makeConfig from '../make-test-suite-conf'
 import importsSeq from '../../src'
 
 const path = resolve(__dirname, '../mask/integration.js')
-const tests = getTests(path)
 
-const t = makeTestSuite(tests, importsSeq)
+const conf = makeConfig(importsSeq)
+const t = makeTestSuite(path, conf)
 
 export default t
