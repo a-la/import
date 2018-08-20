@@ -69,4 +69,5 @@ const getNamed = (namedSeg, fromSeg, quotes, src, defName) => {
 
 module.exports = rule
 
+
 module.exports.re = re
