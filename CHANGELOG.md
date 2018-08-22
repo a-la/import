@@ -1,5 +1,9 @@
 ## 22 August 2018
 
+### 1.4.1
+
+- [doc] Document `replacement` option.
+
 ### 1.4.0
 
 - [feature] Specify `replacement` via `.alamoderc`.
