@@ -14,6 +14,15 @@
   return s
 }
 
+       const replaceRequire = (seg, quotes, src, defName) => {
+  const eq = seg.replace(/(\s+)from(\s+)([\s\S])*/, (m, b, a) => {
+    return `${b}=${a}`
+  })
+  const req = defName ? defName : getRequire(quotes, src)
+  const res = `${eq}${req}`
+  return res
+}
+
        const getSource = (src, config = {}) => {
   const { import: { replacement } = {} } = config
   if (!replacement) return src
@@ -28,5 +37,6 @@
 module.exports.getRequire = getRequire
 module.exports.getIfEsModule = getIfEsModule
 module.exports.getDefault = getDefault
+module.exports.replaceRequire = replaceRequire
 module.exports.getSource = getSource
 //# sourceMappingURL=index.js.map

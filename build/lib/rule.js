@@ -1,4 +1,4 @@
-const { getRequire, getDefault, getSource } = require('.')
+const { getRequire, getDefault, getSource, replaceRequire } = require('.')
 
 const re = /^ *import(\s+([^\s,]+)\s*,?)?(\s*{(?:[^}]+)})?(\s+from\s+(["'])(.+?)\5)/gm
 
@@ -20,15 +20,6 @@ const replaceDefault = (def, replacement) => {
     .replace(',', '')
     .replace(/([^\s]+)/, replacement)
   return d
-}
-
-const replaceRequire = (seg, quotes, src, defName) => {
-  const eq = seg.replace(/(\s+)from(\s+)([\s\S])*/, (m, b, a) => {
-    return `${b}=${a}`
-  })
-  const req = defName ? defName : getRequire(quotes, src)
-  const res = `${eq}${req}`
-  return res
 }
 
 /**

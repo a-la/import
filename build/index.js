@@ -1,5 +1,6 @@
 const { debuglog } = require('util')
 let rule = require('./lib/rule'); if (rule && rule.__esModule) rule = rule.default;
+let importAs = require('./lib/import-as'); if (importAs && importAs.__esModule) importAs = importAs.default;
 
 const LOG = debuglog('@a-la/import')
 
@@ -8,6 +9,7 @@ const LOG = debuglog('@a-la/import')
  */
 const seq = [
   rule,
+  importAs,
 ]
 
 module.exports=seq
