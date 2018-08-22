@@ -1,3 +1,10 @@
+## 22 August 2018
+
+### 1.4.0
+
+- [feature] Specify `replacement` via `.alamoderc`.
+- [package] Add `.alamoderc.json`.
+
 ## 20 August 2018
 
 ### 1.3.1
