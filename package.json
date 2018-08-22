@@ -4,9 +4,9 @@
   "description": "À La Regex to transpile an import statement into require.",
   "main": "build",
   "scripts": {
-    "t": "zoroaster -b",
-    "test": "zoroaster -b test/spec",
-    "test-build": "BABEL_ENV=test-build yarn test",
+    "t": "zoroaster -a",
+    "test": "zoroaster -a test/spec",
+    "test-build": "ALAMODE_ENV=test-build yarn test",
     "test-all": "yarn-s test test-build",
     "test-watch": "yarn test -w",
     "lint": "eslint .",
@@ -56,13 +56,13 @@
   "homepage": "https://github.com/a-la/import#readme",
   "devDependencies": {
     "@a-la/context": "1.1.1",
-    "alamode": "1.1.0",
+    "alamode": "1.2.1",
     "catchment": "3.0.0",
     "documentary": "1.10.0",
     "eslint-config-artdeco": "1.0.1",
     "restream": "3.1.0",
     "yarn-s": "1.1.0",
-    "zoroaster": "2.3.0"
+    "zoroaster": "2.4.0"
   },
   "dependencies": {}
 }
