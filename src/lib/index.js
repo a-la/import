@@ -14,6 +14,15 @@ export const getDefault = (name, req) => {
   return s
 }
 
+export const replaceRequire = (seg, quotes, src, defName) => {
+  const eq = seg.replace(/(\s+)from(\s+)([\s\S])*/, (m, b, a) => {
+    return `${b}=${a}`
+  })
+  const req = defName ? defName : getRequire(quotes, src)
+  const res = `${eq}${req}`
+  return res
+}
+
 export const getSource = (src, config = {}) => {
   const { import: { replacement } = {} } = config
   if (!replacement) return src

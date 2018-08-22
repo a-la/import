@@ -1,5 +1,6 @@
 import { debuglog } from 'util'
 import rule from './lib/rule'
+import importAs from './lib/import-as'
 
 const LOG = debuglog('@a-la/import')
 
@@ -8,6 +9,7 @@ const LOG = debuglog('@a-la/import')
  */
 const seq = [
   rule,
+  importAs,
 ]
 
 export default seq

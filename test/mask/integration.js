@@ -19,3 +19,10 @@ import def, { methodA, methodB } from 'test'
 /* expected */
 let def = require('test'); if (def && def.__esModule) def = def.default; const { methodA, methodB } = def
 /**/
+
+// import all as
+import * as test from 'test'
+
+/* expected */
+const test = require('test')
+/**/
