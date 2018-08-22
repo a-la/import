@@ -13,3 +13,14 @@ export const getDefault = (name, req) => {
   const s = `${name} = ${req}; ${i}`
   return s
 }
+
+export const getSource = (src, config = {}) => {
+  const { import: { replacement } = {} } = config
+  if (!replacement) return src
+  const { from, to } = replacement
+  if (from === undefined) throw new Error('No "from" is given option is given for the replacement.')
+  if (to === undefined ) throw new Error('No "to" is given option is given for the replacement.')
+  const fromRe = new RegExp(replacement.from)
+  const res = src.replace(fromRe, replacement.to)
+  return res
+}
