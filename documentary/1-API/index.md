@@ -15,6 +15,25 @@ The rule set exported as an array by `ALaImport` has multiple regexes and replac
 
 %FORK-js example example/example%
 
+### Options
+
+The transform accepts a single `replacement` option via the `.alamoderc` to be able to substitute the name or path of an imported module.
+
+```json
+{
+  "env": {
+    "test-build": {
+      "import": {
+        "replacement": {
+          "from": "^((../)+)src",
+          "to": "$1build"
+        }
+      }
+    }
+  }
+}
+```
+
 <!--
 ```### ALaImport => string
 [

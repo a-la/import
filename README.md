@@ -15,6 +15,7 @@ yarn add -E @a-la/import
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
   * [`ALaImport` Sequence](#alaimport-sequence)
+  * [Options](#options)
 - [Output Example](#output-example)
 - [Lines Preservation](#lines-preservation)
   * [Named Imports](#named-imports)
@@ -60,6 +61,25 @@ import App from 'koa'
 let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default;
 let ALaImport = require("@a-la/import"); if (ALaImport && ALaImport.__esModule) ALaImport = ALaImport.default;
 let App = require('koa'); if (App && App.__esModule) App = App.default;
+```
+
+### Options
+
+The transform accepts a single `replacement` option via the `.alamoderc` to be able to substitute the name or path of an imported module.
+
+```json
+{
+  "env": {
+    "test-build": {
+      "import": {
+        "replacement": {
+          "from": "^((../)+)src",
+          "to": "$1build"
+        }
+      }
+    }
+  }
+}
 ```
 
 
