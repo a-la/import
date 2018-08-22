@@ -1,4 +1,4 @@
-const { getRequire, getDefault } = require('.')
+const { getRequire, getDefault, getSource } = require('.')
 
 const re = /^ *import(\s+([^\s,]+)\s*,?)?(\s*{(?:[^}]+)})?(\s+from\s+(["'])(.+?)\5)/gm
 
@@ -38,8 +38,9 @@ const replaceRequire = (seg, quotes, src, defName) => {
 const rule = {
   re,
   replacement(match, defSeg, defName, namedSeg, fromSeg, quotes, src) {
-    const replacedDefault = getDef(defSeg, defName, quotes, src)
-    const replacedNamed = getNamed(namedSeg, fromSeg, quotes, src, defName)
+    const source = getSource(src, this.config)
+    const replacedDefault = getDef(defSeg, defName, quotes, source)
+    const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
     const res = [
       replacedDefault,
       replacedNamed,
@@ -67,7 +68,8 @@ const getNamed = (namedSeg, fromSeg, quotes, src, defName) => {
   return s
 }
 
-module.exports = rule
+module.exports=rule
 
 
 module.exports.re = re
+//# sourceMappingURL=rule.js.map

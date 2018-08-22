@@ -10,4 +10,5 @@ const seq = [
   rule,
 ]
 
-module.exports = seq
+module.exports=seq
+//# sourceMappingURL=index.js.map
