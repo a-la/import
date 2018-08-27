@@ -104,3 +104,30 @@ alias3,
 =
   def
 /**/
+
+// import as
+import * as tests from './tests'
+
+/* expected */
+const tests = require('./tests');
+/**/
+
+// import as with new lines
+import * as tests
+from './tests'
+
+/* expected */
+const tests
+= require('./tests');
+/**/
+
+// import as with multiple new lines
+import
+* as tests
+from './tests'
+
+/* expected */
+
+const tests
+= require('./tests');
+/**/

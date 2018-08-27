@@ -23,7 +23,11 @@ const tests = {
   },
 }
 
+const hasFocused = Object.keys(tests).some(k => k.startsWith('!'))
+
 const t = Object.keys(tests).reduce((acc, k) => {
+  if (hasFocused && !k.startsWith('!')) return acc
+
   const { mask, rule: r } = tests[k]
   const path = resolve(__dirname, '../mask', mask)
   const conf = makeConfig(r)
