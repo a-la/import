@@ -2,6 +2,7 @@ import { resolve } from 'path'
 import { makeTestSuite } from 'zoroaster'
 import makeConfig from '../make-test-suite-conf'
 import rule from '../../src/lib/rule'
+import asRule from '../../src/lib/import-as'
 import importsSeq from '../../src'
 
 const tests = {
@@ -20,6 +21,10 @@ const tests = {
   'line numbers': {
     rule: importsSeq,
     mask: 'line-numbers.js',
+  },
+  as: {
+    rule: asRule,
+    mask: 'as.js',
   },
 }
 
