@@ -1,3 +1,10 @@
+## 27 August 2018
+
+### 1.5.0
+
+- [feature] `import * as` and `import def, * as` statements.
+- [fix] Add semicolon after `= require('./package');`.
+
 ## 22 August 2018
 
 ### 1.4.1
