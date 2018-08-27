@@ -96,17 +96,21 @@ import { methodC, methodD as aliasD } from 'alamode'
 import defaultALaMode, {
   methodE, methodF,
 } from 'alamode'
+
+import def, * as tests from './tests'
 ```
 
 ```js
 let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default;
 let scopeALaMode = require("@a-la/import"); if (scopeALaMode && scopeALaMode.__esModule) scopeALaMode = scopeALaMode.default;
 
-const { methodA, methodB } = require('alamode')
-const { methodC, methodD: aliasD } = require('alamode')
+const { methodA, methodB } = require('alamode');
+const { methodC, methodD: aliasD } = require('alamode');
 let defaultALaMode = require('alamode'); if (defaultALaMode && defaultALaMode.__esModule) defaultALaMode = defaultALaMode.default; const {
   methodE, methodF,
 } = defaultALaMode
+
+let tests = def = require('./tests'); if (def && def.__esModule) def = def.default;
 ```
 
 
@@ -127,7 +131,7 @@ from 'package'
 ```js
 const { test, test2,
   test3: alias3 }
-= require('package')
+= require('package');
 ```
 
 ### Named & Default
@@ -167,7 +171,7 @@ let def = require('package'); if (def && def.__esModule) def = def.default; cons
 - [x] `import { export1 , export2 } from "module-name";`
 - [x] `import { export1 , export2 as alias2 , [...] } from "module-name";`
 - [x] `import defaultExport, { export [ , [...] ] } from "module-name";`
-- [ ] `import defaultExport, * as name from "module-name";`
+- [x] `import defaultExport, * as name from "module-name";`
 - [ ] `import "module-name";`
 - [ ] `var promise = import(module-name);`
 

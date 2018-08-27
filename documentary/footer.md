@@ -28,7 +28,7 @@ When there is a default import along with named once, the line numbers will be r
 - [x] `import { export1 , export2 } from "module-name";`
 - [x] `import { export1 , export2 as alias2 , [...] } from "module-name";`
 - [x] `import defaultExport, { export [ , [...] ] } from "module-name";`
-- [ ] `import defaultExport, * as name from "module-name";`
+- [x] `import defaultExport, * as name from "module-name";`
 - [ ] `import "module-name";`
 - [ ] `var promise = import(module-name);`
 
