@@ -1,5 +1,5 @@
 export const getRequire = (quotes, src) => {
-  return `require(${quotes}${src}${quotes})`
+  return `require(${quotes}${src}${quotes});`
 }
 
 export const getIfEsModule = (name) => {
@@ -10,7 +10,7 @@ export const getIfEsModule = (name) => {
 export const getDefault = (name, req) => {
   if (!name) return
   const i = getIfEsModule(name)
-  const s = `${name} = ${req}; ${i}`
+  const s = `${name} = ${req} ${i}`
   return s
 }
 

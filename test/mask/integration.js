@@ -10,7 +10,7 @@ let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = a
 let ALaImport = require('@a-la/import'); if (ALaImport && ALaImport.__esModule) ALaImport = ALaImport.default;
 let App = require("koa"); if (App && App.__esModule) App = App.default;
 
-const { methodA, methodB } = require('@a-la/named-import')
+const { methodA, methodB } = require('@a-la/named-import');
 /**/
 
 // default and named
@@ -24,5 +24,5 @@ let def = require('test'); if (def && def.__esModule) def = def.default; const {
 import * as test from 'test'
 
 /* expected */
-const test = require('test')
+const test = require('test');
 /**/

@@ -8,7 +8,7 @@ import {
 const {
   test,
   test2,
-} = require('test')
+} = require('test');
 /**/
 
 // default
@@ -75,7 +75,7 @@ const
       :
     alias,
   }
-= require('test')
+= require('test');
 /**/
 
 // all new lines
