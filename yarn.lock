@@ -2,11 +2,11 @@
 # yarn lockfile v1
 
 
-"@a-la/context@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@a-la/context/-/context-1.2.0.tgz#9e05e6994959454fb27849469005a008eb5d7fd0"
+"@a-la/context@1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@a-la/context/-/context-1.2.3.tgz#2e8c98f48b6f0d3883e7aca16124122b57c827d6"
   dependencies:
-    "@a-la/markers" "1.0.0"
+    "@a-la/markers" "1.0.3"
     catchment "3.0.1"
     erte "1.1.4"
     restream "3.1.1"
@@ -27,9 +27,9 @@
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@a-la/import/-/import-1.5.0.tgz#13fbf6e0821c56f0c2bd0d865f8e7e8eb0355156"
 
-"@a-la/markers@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@a-la/markers/-/markers-1.0.0.tgz#7f8353dcea4756a1d2235157ded55ee77f2e409f"
+"@a-la/markers@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@a-la/markers/-/markers-1.0.3.tgz#2800c812acce35d01756cd82a0553320d405f38d"
   dependencies:
     restream "3.1.1"
 
