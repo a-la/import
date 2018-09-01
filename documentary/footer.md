@@ -32,6 +32,11 @@ When there is a default import along with named once, the line numbers will be r
 - [ ] `import "module-name";`
 - [ ] `var promise = import(module-name);`
 
+## TODO
+
+- [ ] Add an option to ignore the `__esModule` check for specified packages.
+- [ ] Better `from 'package'` handling when matchers' logic is updated in the `restream`.
+
 ## Copyright
 
 (c) [À La Mode][1] 2018

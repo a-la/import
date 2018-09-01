@@ -21,6 +21,7 @@ yarn add -E @a-la/import
   * [Named Imports](#named-imports)
   * [Named & Default](#named--default)
 - [Checklist](#checklist)
+- [TODO](#todo)
 - [Copyright](#copyright)
 
 ## API
@@ -34,34 +35,6 @@ import ALaImport from '@a-la/import'
 ### `ALaImport` Sequence
 
 The rule set exported as an array by `ALaImport` has multiple regexes and replacer functions to match all possible cases.
-
-```js
-/* yarn example/ */
-import { Replaceable } from 'restream'
-import ALaImport from '@a-la/import'
-
-const STRING = `import aLaMode from 'alamode'
-import ALaImport from "@a-la/import"
-import App from 'koa'
-`
-
-;(async () => {
-  const stream = new Replaceable([
-    ...ALaImport,
-  ])
-  await new Promise((r, j) => {
-    stream.end(STRING, r)
-    stream.on('error', j)
-  })
-  stream.pipe(process.stdout)
-})()
-```
-
-```js
-let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default;
-let ALaImport = require("@a-la/import"); if (ALaImport && ALaImport.__esModule) ALaImport = ALaImport.default;
-let App = require('koa'); if (App && App.__esModule) App = App.default;
-```
 
 ### Options
 
@@ -174,6 +147,11 @@ let def = require('package'); if (def && def.__esModule) def = def.default; cons
 - [x] `import defaultExport, * as name from "module-name";`
 - [ ] `import "module-name";`
 - [ ] `var promise = import(module-name);`
+
+## TODO
+
+- [ ] Add an option to ignore the `__esModule` check for specified packages.
+- [ ] Better `from 'package'` handling when matchers' logic is updated in the `restream`.
 
 ## Copyright
 

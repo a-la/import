@@ -11,9 +11,9 @@ import ALaImport from '@a-la/import'
 
 The rule set exported as an array by `ALaImport` has multiple regexes and replacer functions to match all possible cases.
 
-%EXAMPLE: example/example.js, ../src => @a-la/import, js%
+<!-- %EXAMPLE: example/example.js, ../src => @a-la/import, js%
 
-%FORK-js example example/example%
+%FORK-js example example/example% -->
 
 ### Options
 

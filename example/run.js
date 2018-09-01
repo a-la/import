@@ -1,17 +1,12 @@
 /* yarn example/ */
-import { Replaceable } from 'restream'
+import ALaContext from '@a-la/context'
 import ALaImport from '../src'
 import { readFileSync } from 'fs'
 
 const STRING = readFileSync(process.argv[3] || 'example/imports.js')
 
 ;(async () => {
-  const stream = new Replaceable([
-    ...ALaImport,
-  ])
-  await new Promise((r, j) => {
-    stream.end(STRING, r)
-    stream.on('error', j)
-  })
-  stream.pipe(process.stdout)
+  const context = new ALaContext()
+  const { result } = await context.stream(ALaImport, STRING)
+  console.log(result)
 })()
