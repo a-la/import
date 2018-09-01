@@ -1,3 +1,9 @@
+## 1 September 2018
+
+### 1.6.0
+
+- [feature] Access string and literal markers from `alamode`.
+
 ## 27 August 2018
 
 ### 1.5.0
