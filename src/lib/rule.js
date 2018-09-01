@@ -1,6 +1,9 @@
-import { getRequire, getDefault, getSource, replaceRequire } from '.'
+import {
+  getRequire, getDefault, getSource, replaceRequire, fromRe,
+} from '.'
 
-const re = /^ *import(\s+([^\s,]+)\s*,?)?(\s*{(?:[^}]+)})?(\s+from\s+(["'])(.+?)\5)/gm
+const importRe = /^ *import(\s+([^\s,]+)\s*,?)?(\s*{(?:[^}]+)})?/
+const re = new RegExp(`${importRe.source}${fromRe.source}`, 'gm')
 
 /**
  * Remaps `as` into `:`.
@@ -28,7 +31,11 @@ const replaceDefault = (def, replacement) => {
  */
 const rule = {
   re,
-  replacement(match, defSeg, defName, namedSeg, fromSeg, quotes, src) {
+  replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
+    const realSrc = ld
+      ? this.markers.literals.map[ld]
+      : this.markers.strings.map[sd]
+    const [, quotes, src] = /(["'`])(.+?)\1/.exec(realSrc)
     const source = getSource(src, this.config)
     const replacedDefault = getDef(defSeg, defName, quotes, source)
     const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
