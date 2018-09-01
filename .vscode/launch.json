@@ -16,8 +16,8 @@
       },
       "console": "integratedTerminal",
       "args": [
-        "test/spec",
-        "-b",
+        "test/spec/replaceable.js",
+        "-a",
         "-w",
       ],
       "skipFiles": [
