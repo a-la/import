@@ -1,4 +1,4 @@
-const { debuglog } = require('util')
+const { debuglog } = require('util');
 let rule = require('./lib/rule'); if (rule && rule.__esModule) rule = rule.default;
 let importAs = require('./lib/import-as'); if (importAs && importAs.__esModule) importAs = importAs.default;
 
