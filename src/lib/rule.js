@@ -36,7 +36,12 @@ const rule = {
       ? this.markers.literals.map[ld]
       : this.markers.strings.map[sd]
     const [, quotes, src] = /(["'`])(.+?)\1/.exec(realSrc)
-    const source = getSource(src, this.config)
+    // a special case because regexes are replaced before literals
+    const s = src.replace(this.markers.regexes.regExp, (m, i) => {
+      const val = this.markers.regexes.map[i]
+      return val
+    })
+    const source = getSource(s, this.config)
     const replacedDefault = getDef(defSeg, defName, quotes, source)
     const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
     const res = [
