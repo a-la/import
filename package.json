@@ -1,7 +1,7 @@
 {
   "name": "@a-la/import",
   "version": "1.5.0",
-  "description": "À La Regex to transpile an import statement into require.",
+  "description": "À La Regex to transpile the import statement into a require call.",
   "main": "build",
   "scripts": {
     "t": "zoroaster -a",
