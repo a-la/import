@@ -1,5 +1,5 @@
 /* yarn example/ */
-import { Replaceable } from 'restream'
+import ALaContext from '@a-la/context'
 import ALaImport from '../src'
 
 const STRING = `import aLaMode from 'alamode'
@@ -8,12 +8,7 @@ import App from 'koa'
 `
 
 ;(async () => {
-  const stream = new Replaceable([
-    ...ALaImport,
-  ])
-  await new Promise((r, j) => {
-    stream.end(STRING, r)
-    stream.on('error', j)
-  })
-  stream.pipe(process.stdout)
+  const context = new ALaContext()
+  const { result } = await context.stream(ALaImport, STRING)
+  console.log(result)
 })()

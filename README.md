@@ -34,7 +34,30 @@ import ALaImport from '@a-la/import'
 
 ### `ALaImport` Sequence
 
-The rule set exported as an array by `ALaImport` has multiple regexes and replacer functions to match all possible cases.
+The rule set exported as an array by `ALaImport` has multiple regexes and replacer functions to match all possible cases. The replacer functions expect to see the `matchers` property on the context, which is set by `alamode` to access cut out strings. The transform can be run using `@a-la/context` which is a lightweight version of `alamode` which mimics its stream functionality.
+
+```js
+/* yarn example/ */
+import ALaContext from '@a-la/context'
+import ALaImport from '@a-la/import'
+
+const STRING = `import aLaMode from 'alamode'
+import ALaImport from "@a-la/import"
+import App from 'koa'
+`
+
+;(async () => {
+  const context = new ALaContext()
+  const { result } = await context.stream(ALaImport, STRING)
+  console.log(result)
+})()
+```
+
+```js
+let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default;
+let ALaImport = require("@a-la/import"); if (ALaImport && ALaImport.__esModule) ALaImport = ALaImport.default;
+let App = require('koa'); if (App && App.__esModule) App = App.default;
+```
 
 ### Options
 
