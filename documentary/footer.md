@@ -22,7 +22,7 @@ When there is a default import along with named once, the line numbers will be r
 ## Checklist
 
 - [x] `import defaultExport from "module-name"`
-- [ ] `import * as name from "module-name";`
+- [x] `import * as name from "module-name";`
 - [x] `import { export } from "module-name";`
 - [x] `import { export as alias } from "module-name";`
 - [x] `import { export1 , export2 } from "module-name";`
