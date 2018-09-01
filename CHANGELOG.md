@@ -1,5 +1,10 @@
 ## 1 September 2018
 
+### 1.6.1
+
+- [fix] Make sure that paths are replaced when importing with template literals.
+- [deps] Update `@a-la/context`.
+
 ### 1.6.0
 
 - [feature] Access string and literal markers from `alamode`.
