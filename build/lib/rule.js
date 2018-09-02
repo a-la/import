@@ -1,9 +1,17 @@
 const {
-  getRequire, getDefault, getSource, replaceRequire, fromRe,
+  getRequire, getDefault, getSource, replaceRequire, advancedFromRe,
+  simpleFromRe,
+  getSrcFromMarkers,
 } = require('.');
 
 const importRe = /^ *import(\s+([^\s,]+)\s*,?)?(\s*{(?:[^}]+)})?/
-const re = new RegExp(`${importRe.source}${fromRe.source}`, 'gm')
+
+       const advancedRe = new RegExp(
+  `${importRe.source}${advancedFromRe.source}`, 'gm'
+)
+       const re = new RegExp(
+  `${importRe.source}${simpleFromRe.source}`, 'gm'
+)
 
 /**
  * Remaps `as` into `:`.
@@ -25,31 +33,41 @@ const replaceDefault = (def, replacement) => {
   return d
 }
 
+const getRes = (src, defSeg, defName, quotes, namedSeg, fromSeg, config) => {
+  const source = getSource(src, config)
+  const replacedDefault = getDef(defSeg, defName, quotes, source)
+  const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
+  const res = [
+    replacedDefault,
+    replacedNamed,
+  ]
+    .filter(a => a)
+    .join(' ')
+  return res
+}
+
+       const advancedRule = {
+  re: advancedRe,
+  replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
+    const { src, quotes } = getSrcFromMarkers(sd, ld, this)
+    // a special case because regexes are replaced before literals
+    const s = src.replace(this.markers.regexes.regExp, (m, i) => {
+      const val = this.markers.regexes.map[i]
+      return val
+    })
+    const res = getRes(s, defSeg, defName, quotes, namedSeg, fromSeg, this.config)
+    return res
+  },
+}
+
 /**
  * A rule to replace `import { method } from 'package'` statement.
  * @type {import('restream').Rule}
  */
 const rule = {
   re,
-  replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
-    const realSrc = ld
-      ? this.markers.literals.map[ld]
-      : this.markers.strings.map[sd]
-    const [, quotes, src] = /(["'`])(.+?)\1/.exec(realSrc)
-    // a special case because regexes are replaced before literals
-    const s = src.replace(this.markers.regexes.regExp, (m, i) => {
-      const val = this.markers.regexes.map[i]
-      return val
-    })
-    const source = getSource(s, this.config)
-    const replacedDefault = getDef(defSeg, defName, quotes, source)
-    const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
-    const res = [
-      replacedDefault,
-      replacedNamed,
-    ]
-      .filter(a => a)
-      .join(' ')
+  replacement(match, defSeg, defName, namedSeg, fromSeg, quotes, src) {
+    const res = getRes(src, defSeg, defName, quotes, namedSeg, fromSeg, this.config)
     return res
   },
 }
@@ -73,6 +91,7 @@ const getNamed = (namedSeg, fromSeg, quotes, src, defName) => {
 
 module.exports=rule
 
-
+module.exports.advancedRe = advancedRe
 module.exports.re = re
+module.exports.advancedRule = advancedRule
 //# sourceMappingURL=rule.js.map
