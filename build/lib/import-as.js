@@ -1,9 +1,4 @@
-const { replaceRequire, fromRe } = require('.');
-
-const makeDefaultIf = (name) => {
-  const i = `if (${name} && ${name}.__esModule) ${name} = ${name}.default;`
-  return i
-}
+const { replaceRequire, fromRe, getIfEsModule } = require('.');
 
 const importRe = /( *import\s+(?:(.+?)\s*,\s*)?\*\s+as\s+(.+?))/
 const re = new RegExp(`${importRe.source}${fromRe.source}`, 'gm')
@@ -21,11 +16,14 @@ const importAs =
     const ws = '\n'.repeat(length - 1)
     let c
     if (defName) {
-      c = `${ws}let ${varName} = ${defName}${r} ${makeDefaultIf(defName)}`
+      c = [
+        `${ws}let ${varName} = ${defName}${r}`,
+        getIfEsModule(defName),
+      ].join('; ')
     } else {
       c = `${ws}const ${varName}${r}`
     }
-    return c
+    return `${c};`
   },
 }
 
