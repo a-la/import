@@ -9,16 +9,14 @@
       "request": "launch",
       "name": "Launch Zoroaster",
       "program": "${workspaceFolder}/node_modules/.bin/zoroaster",
-      "env": {
-        "BABEL_ENV": "debug",
-        "ZOROASTER_TIMEOUT": "9999999",
-        "NODE_DEBUG": "@a-la/import",
-      },
       "console": "integratedTerminal",
       "args": [
-        "test/spec/replaceable.js",
+        "test/spec",
+        "test/mask",
         "-a",
         "-w",
+        "-t",
+        "99999999"
       ],
       "skipFiles": [
         "<node_internals>/**/*.js"
