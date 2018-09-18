@@ -9,9 +9,9 @@ Object.assign(test, {
 
 /* expected */
 {
-  "c": true,
-  "b": true,
-  "erte": true
+  "c": "c",
+  "b": "b",
+  "erte": "erte"
 }
 /**/
 
@@ -24,7 +24,7 @@ Object.assign(test, {
 
 /* expected */
 {
-  "erte": true
+  "erte": "erte"
 }
 /**/
 
@@ -38,7 +38,39 @@ Object.assign(test, {
 
 /* expected */
 {
-  "c": true,
-  "b": true
+  "c": "c",
+  "b": "b"
+}
+/**/
+
+// evaluates as
+import * as alamode from '../fixture/alamode'
+
+Object.assign(test, {
+  c: alamode.c(),
+  b: alamode.b(),
+})
+
+/* expected */
+{
+  "c": "c",
+  "b": "b"
+}
+/**/
+
+// evaluates as with default
+import erte, * as alamode from '../fixture/alamode'
+
+Object.assign(test, {
+  "erte": erte(),
+  c: alamode.c(),
+  b: alamode.b(),
+})
+
+/* expected */
+{
+  "erte": "erte",
+  "c": "c",
+  "b": "b"
 }
 /**/

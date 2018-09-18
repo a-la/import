@@ -3,13 +3,13 @@ Object.defineProperty(exports, '__esModule', {
 })
 
 const erte = () => {
-  return true
+  return 'erte'
 }
 const c = () => {
-  return true
+  return 'c'
 }
 const b = () => {
-  return true
+  return 'b'
 }
 
 exports.c = c

@@ -1,11 +1,11 @@
 const erte = () => {
-  return true
+  return 'erte'
 }
 const c = () => {
-  return true
+  return 'c'
 }
 const b = () => {
-  return true
+  return 'b'
 }
 
 module.exports=erte
