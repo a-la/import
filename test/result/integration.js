@@ -17,7 +17,7 @@ const { methodA, methodB } = require('@a-la/named-import');
 import def, { methodA, methodB } from 'test'
 
 /* expected */
-let def = require('test'); if (def && def.__esModule) def = def.default; const { methodA, methodB } = def
+let def = require('test'); const { methodA, methodB } = def; if (def && def.__esModule) def = def.default;
 /**/
 
 // import all as

@@ -37,7 +37,7 @@ const { test } = require('@scope/test');
 import def, { test } from 'test'
 
 /* expected */
-let def = require('test'); if (def && def.__esModule) def = def.default; const { test } = def
+let def = require('test'); const { test } = def; if (def && def.__esModule) def = def.default;
 /**/
 
 // multiple
@@ -51,7 +51,7 @@ const { test, test2 } = require('test');
 import def, { test, test2 } from 'test'
 
 /* expected */
-let def = require('test'); if (def && def.__esModule) def = def.default; const { test, test2 } = def
+let def = require('test'); const { test, test2 } = def; if (def && def.__esModule) def = def.default;
 /**/
 
 // multiple with aliases
@@ -85,9 +85,9 @@ import def, {
 } from 'test'
 
 /* expected */
-let def = require('test'); if (def && def.__esModule) def = def.default; const {
+let def = require('test'); const {
   test
-} = def
+} = def; if (def && def.__esModule) def = def.default;
 /**/
 
 // new lines with default and new line
@@ -95,8 +95,8 @@ import def,
   { test } from 'test'
 
 /* expected */
-let def = require('test'); if (def && def.__esModule) def = def.default; const
-  { test } = def
+let def = require('test'); const
+  { test } = def; if (def && def.__esModule) def = def.default;
 /**/
 
 // new line with commas
@@ -167,8 +167,8 @@ import def, {
 } from 'test'
 
 /* expected */
-let def = require('test'); if (def && def.__esModule) def = def.default; const {
+let def = require('test'); const {
   test, test2,
   test3
-} = def
+} = def; if (def && def.__esModule) def = def.default;
 /**/

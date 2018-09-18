@@ -25,10 +25,10 @@ import test, {
 } from 'test'
 
 /* expected */
-let test = require('test'); if (test && test.__esModule) test = test.default; const {
+let test = require('test'); const {
   test2,
   test3,
-} = test
+} = test; if (test && test.__esModule) test = test.default;
 /**/
 
 // default & named with new line
@@ -36,8 +36,8 @@ import def,
   { test } from 'test'
 
 /* expected */
-let def = require('test'); if (def && def.__esModule) def = def.default; const
-  { test } = def
+let def = require('test'); const
+  { test } = def; if (def && def.__esModule) def = def.default;
 /**/
 
 // default, named & alias with new lines
@@ -51,12 +51,12 @@ from 'test'
 
 /* expected */
 let
-  def = require('test'); if (def && def.__esModule) def = def.default; const
+  def = require('test'); const
   {
     test,
     test2: alias2,
   }
-= def
+= def; if (def && def.__esModule) def = def.default;
 /**/
 
 // aliases with new lines
@@ -93,7 +93,7 @@ from
 
 /* expected */
 let
-    def = require('test'); if (def && def.__esModule) def = def.default; const
+    def = require('test'); const
   {
     test,
     test2: alias2,
@@ -102,7 +102,7 @@ let
 alias3,
   }
 =
-  def
+  def; if (def && def.__esModule) def = def.default;
 /**/
 
 // import as

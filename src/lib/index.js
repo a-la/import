@@ -1,17 +1,17 @@
 export const getRequire = (quotes, src) => {
-  return `require(${quotes}${src}${quotes});`
+  return `require(${quotes}${src}${quotes})`
 }
 
 export const getIfEsModule = (name) => {
-  const s = `if (${name} && ${name}.__esModule) ${name} = ${name}.default;`
+  const s = `if (${name} && ${name}.__esModule) ${name} = ${name}.default`
   return s
 }
 
 export const getDefault = (name, req) => {
   if (!name) return
-  const i = getIfEsModule(name)
-  const s = `${name} = ${req} ${i}`
-  return s
+  const ifES = getIfEsModule(name)
+  const d = `${name} = ${req}`
+  return { d, ifES }
 }
 
 export const replaceRequire = (seg, quotes, src, defName) => {

@@ -42,25 +42,26 @@ const rule = {
       return val
     })
     const source = getSource(s, this.config)
-    const replacedDefault = getDef(defSeg, defName, quotes, source)
+    const { t, ifES } = getDef(defSeg, defName, quotes, source)
     const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
     const res = [
-      replacedDefault,
+      t,
       replacedNamed,
+      ifES,
     ]
       .filter(a => a)
-      .join(' ')
-    return res
+      .join('; ')
+    return `${res};`
   },
 }
 
 const getDef = (defSeg, defName, quotes, src) => {
-  if (!defSeg) return null
+  if (!defSeg) return {}
   const req = getRequire(quotes, src)
-  const dd = getDefault(defName, req)
-  const d = replaceDefault(defSeg, dd)
-  const s = `let${d}`
-  return s
+  const { d, ifES } = getDefault(defName, req)
+  const s = replaceDefault(defSeg, d)
+  const t = `let${s}`
+  return { t, ifES }
 }
 
 const getNamed = (namedSeg, fromSeg, quotes, src, defName) => {
