@@ -10,6 +10,10 @@ _À La Mode_ is a RegExp-based transpiler which works faster than AST-based tran
 yarn add -E @a-la/import
 ```
 
+%~%
+
 ## Table Of Contents
 
 %TOC%
+
+%~%

@@ -10,6 +10,8 @@ _À La Mode_ is a RegExp-based transpiler which works faster than AST-based tran
 yarn add -E @a-la/import
 ```
 
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
+
 ## Table Of Contents
 
 - [Table Of Contents](#table-of-contents)
@@ -23,6 +25,8 @@ yarn add -E @a-la/import
 - [Checklist](#checklist)
 - [TODO](#todo)
 - [Copyright](#copyright)
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
 
 ## API
 
@@ -78,6 +82,9 @@ The transform accepts a single `replacement` option via the `.alamoderc` to be a
 }
 ```
 
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
+
+
 
 ## Output Example
 
@@ -102,12 +109,17 @@ let scopeALaMode = require("@a-la/import"); if (scopeALaMode && scopeALaMode.__e
 
 const { methodA, methodB } = require('alamode');
 const { methodC, methodD: aliasD } = require('alamode');
-let defaultALaMode = require('alamode'); if (defaultALaMode && defaultALaMode.__esModule) defaultALaMode = defaultALaMode.default; const {
+let defaultALaMode = require('alamode'); const {
   methodE, methodF,
-} = defaultALaMode
+} = defaultALaMode; if (defaultALaMode && defaultALaMode.__esModule) defaultALaMode = defaultALaMode.default;
 
 let tests = def = require('./tests'); if (def && def.__esModule) def = def.default;
 ```
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/3.svg?sanitize=true"></a></p>
+
+
+
 
 
 ## Lines Preservation
@@ -147,7 +159,7 @@ import def, {
 ```
 
 ```js
-let def = require('package'); if (def && def.__esModule) def = def.default; const {
+let def = require('package'); const {
   test, test2,
   test3: alias3,
   test4
@@ -155,8 +167,10 @@ let def = require('package'); if (def && def.__esModule) def = def.default; cons
   alias4,
 }
   =
-  def
+  def; if (def && def.__esModule) def = def.default;
 ```
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg?sanitize=true"></a></p>
 
 ## Checklist
 
@@ -171,6 +185,8 @@ let def = require('package'); if (def && def.__esModule) def = def.default; cons
 - [ ] `import "module-name";`
 - [ ] `var promise = import(module-name);`
 
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true"></a></p>
+
 ## TODO
 
 - [ ] Add an option to ignore the `__esModule` check for specified packages.
@@ -181,3 +197,5 @@ let def = require('package'); if (def && def.__esModule) def = def.default; cons
 (c) [À La Mode][1] 2018
 
 [1]: https://alamode.cc
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg?sanitize=true"></a></p>

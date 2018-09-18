@@ -1,4 +1,3 @@
-
 ## Lines Preservation
 
 The transform will attempt to preserve lines as they are for easier generation of source maps by `alamode`. In future, this might change.
@@ -19,6 +18,8 @@ When there is a default import along with named once, the line numbers will be r
 
 %FORK-js example example/run example/lines-default.js%
 
+%~%
+
 ## Checklist
 
 - [x] `import defaultExport from "module-name"`
@@ -32,6 +33,8 @@ When there is a default import along with named once, the line numbers will be r
 - [ ] `import "module-name";`
 - [ ] `var promise = import(module-name);`
 
+%~%
+
 ## TODO
 
 - [ ] Add an option to ignore the `__esModule` check for specified packages.
@@ -42,3 +45,5 @@ When there is a default import along with named once, the line numbers will be r
 (c) [À La Mode][1] 2018
 
 [1]: https://alamode.cc
+
+%~ -1%

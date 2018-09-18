@@ -1,4 +1,3 @@
-
 ## API
 
 The _ALaImport_ is the default export and an array containing a sequence of rules for [_Replaceable_](https://github.com/artdecocode/restream#replaceable-class).
@@ -33,6 +32,8 @@ The transform accepts a single `replacement` option via the `.alamoderc` to be a
   }
 }
 ```
+
+%~%
 
 <!--
 ```### ALaImport => string
