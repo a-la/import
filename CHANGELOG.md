@@ -1,3 +1,9 @@
+## 20 September 2018
+
+### 1.6.2
+
+- [fix] Rearrange default and named to fix the problem with modules imported from `babel`-transpiled modules.
+
 ## 1 September 2018
 
 ### 1.6.1
