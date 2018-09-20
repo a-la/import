@@ -60,11 +60,11 @@
     "@a-la/context": "1.2.3",
     "alamode": "1.5.0",
     "catchment": "3.1.1",
-    "documentary": "1.17.0",
+    "documentary": "1.18.0",
     "eslint-config-artdeco": "1.0.1",
     "restream": "3.2.1",
     "yarn-s": "1.1.0",
-    "zoroaster": "3.4.1"
+    "zoroaster": "3.5.0"
   },
   "dependencies": {}
 }
