@@ -15,9 +15,10 @@ const importAs = {
     const ws = '\n'.repeat(length - 1)
     let c
     const isLocal = /^[./]/.test(src) && !alwaysCheckES(this.config)
+    const o = isLocal ? 'const' : 'let'
     if (defName) {
       c = [
-        `${ws}let ${varName} = ${defName}${r}`,
+        `${ws}${o} ${varName} = ${defName}${r}`,
         ...(isLocal ? [] : [getIfEsModule(defName)]),
       ].join('; ')
     } else {

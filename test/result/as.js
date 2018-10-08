@@ -9,7 +9,7 @@ const tests = require('./tests');
 import def, * as tests from './tests'
 
 /* expected */
-let tests = def = require('./tests');
+const tests = def = require('./tests');
 /**/
 
 // global import as with default
