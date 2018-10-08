@@ -42,13 +42,10 @@ const rule = {
       return val
     })
     const source = getSource(s, this.config)
+    const isLocal = /^[./]/.test(source)
     const { t, ifES } = getDef(defSeg, defName, quotes, source)
     const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
-    const res = [
-      t,
-      replacedNamed,
-      ifES,
-    ]
+    const res = [t, replacedNamed, ...(isLocal ? [] : [ifES])]
       .filter(a => a)
       .join('; ')
     return `${res};`

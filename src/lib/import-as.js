@@ -3,8 +3,7 @@ import { replaceRequire, fromRe, getIfEsModule } from '.'
 const importRe = /( *import\s+(?:(.+?)\s*,\s*)?\*\s+as\s+(.+?))/
 const re = new RegExp(`${importRe.source}${fromRe.source}`, 'gm')
 
-const importAs =
-{
+const importAs = {
   re,
   replacement(match, importSeg, defName, varName, fromSeg, sd, ld) {
     const realSrc = ld
@@ -15,10 +14,11 @@ const importAs =
     const { length } = importSeg.split('\n')
     const ws = '\n'.repeat(length - 1)
     let c
+    const isLocal = /^[./]/.test(src)
     if (defName) {
       c = [
         `${ws}let ${varName} = ${defName}${r}`,
-        getIfEsModule(defName),
+        ...(isLocal ? [] : [getIfEsModule(defName)]),
       ].join('; ')
     } else {
       c = `${ws}const ${varName}${r}`

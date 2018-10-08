@@ -5,9 +5,16 @@ import * as tests from './tests'
 const tests = require('./tests');
 /**/
 
-// import as with default
+// local import as with default
 import def, * as tests from './tests'
 
 /* expected */
-let tests = def = require('./tests'); if (def && def.__esModule) def = def.default;
+let tests = def = require('./tests');
+/**/
+
+// global import as with default
+import def, * as tests from 'tests'
+
+/* expected */
+let tests = def = require('tests'); if (def && def.__esModule) def = def.default;
 /**/
