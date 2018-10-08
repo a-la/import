@@ -16,22 +16,35 @@ The rule set exported as an array by `ALaImport` has multiple regexes and replac
 
 ### Options
 
-The transform accepts a single `replacement` option via the `.alamoderc` to be able to substitute the name or path of an imported module.
+The transform accepts a number of options via the `.alamoderc`.
 
-```json
-{
-  "env": {
-    "test-build": {
-      "import": {
-        "replacement": {
-          "from": "^((../)+)src",
-          "to": "$1build"
+- `replacement` option is used to substitute the name or path of an imported module.
+    ```json5
+    {
+      "env": {
+        "test-build": {
+          "import": {
+            "replacement": {
+              "from": "^((../)+)src",
+              "to": "$1build"
+            }
+          }
         }
       }
     }
-  }
-}
-```
+    ```
+- `esCheck` option is used to always enforce the `if (mod.__esModule)` check -- by default, this is switched off for local imports, but is added when requiring external packages to make it compatible with _Babel_ and _TypeScript_.
+    ```json5
+    {
+      "env": {
+        "test-build": {
+          "import": {
+            "esCheck": "always",
+          }
+        }
+      }
+    }
+    ```
 
 %~%
 
