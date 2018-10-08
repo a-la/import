@@ -58,13 +58,15 @@
   "homepage": "https://github.com/a-la/import#readme",
   "devDependencies": {
     "@a-la/context": "1.2.3",
-    "alamode": "1.5.0",
+    "@a-la/fixture-alamode": "1.0.0",
+    "@a-la/fixture-babel": "1.0.0",
+    "alamode": "1.5.1",
     "catchment": "3.1.1",
-    "documentary": "1.18.0",
+    "documentary": "1.20.1",
     "eslint-config-artdeco": "1.0.1",
     "restream": "3.2.1",
     "yarn-s": "1.1.0",
-    "zoroaster": "3.5.0"
+    "zoroaster": "3.6.2"
   },
   "dependencies": {}
 }
