@@ -42,9 +42,18 @@
 // temp solution, until restream markers can store only part of regex, e.g. '%RESTREAM_MARKER%' instead of %RESTREAM_MARKER% for a string.
        const fromRe = /(\s+from\s+)(?:%%_RESTREAM_STRINGS_REPLACEMENT_(\d+)_%%|%%_RESTREAM_LITERALS_REPLACEMENT_(\d+)_%%)/
 
+       const alwaysCheckES = (config = {}) => {
+  try {
+    return config.import.esCheck == 'always'
+  } catch (err) {
+    return false
+  }
+}
+
 module.exports.getRequire = getRequire
 module.exports.getIfEsModule = getIfEsModule
 module.exports.getDefault = getDefault
 module.exports.replaceRequire = replaceRequire
 module.exports.getSource = getSource
 module.exports.fromRe = fromRe
+module.exports.alwaysCheckES = alwaysCheckES
