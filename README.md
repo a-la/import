@@ -113,7 +113,7 @@ let defaultALaMode = require('alamode'); const {
   methodE, methodF,
 } = defaultALaMode; if (defaultALaMode && defaultALaMode.__esModule) defaultALaMode = defaultALaMode.default;
 
-let tests = def = require('./tests'); if (def && def.__esModule) def = def.default;
+let tests = def = require('./tests');
 ```
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/3.svg?sanitize=true"></a></p>
