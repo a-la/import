@@ -5,6 +5,7 @@ import ALaImport from '../src'
 const STRING = `import aLaMode from 'alamode'
 import ALaImport from "@a-la/import"
 import App from 'koa'
+import test from './test'
 `
 
 ;(async () => {

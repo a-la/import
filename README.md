@@ -48,6 +48,7 @@ import ALaImport from '@a-la/import'
 const STRING = `import aLaMode from 'alamode'
 import ALaImport from "@a-la/import"
 import App from 'koa'
+import test from './test'
 `
 
 ;(async () => {
@@ -61,6 +62,7 @@ import App from 'koa'
 let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default;
 let ALaImport = require("@a-la/import"); if (ALaImport && ALaImport.__esModule) ALaImport = ALaImport.default;
 let App = require('koa'); if (App && App.__esModule) App = App.default;
+const test = require('./test');
 ```
 
 ### Options
