@@ -1,3 +1,9 @@
+## 8 October 2018
+
+### 1.7.0
+
+- [feature] Do not add the `__esModule` check to modules imported locally.
+
 ## 20 September 2018
 
 ### 1.6.2
