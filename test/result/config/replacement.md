@@ -2,14 +2,14 @@
 import test from "../../src/lib"
 
 /* expected */
-let test = require("../../build/lib");
+const test = require("../../build/lib");
 /**/
 
 // replaces paths with literals
 import test from `../../src/lib`
 
 /* expected */
-let test = require(`../../build/lib`);
+const test = require(`../../build/lib`);
 /**/
 
 // replaces import as

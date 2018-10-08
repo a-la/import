@@ -1,4 +1,4 @@
-import { replaceRequire, fromRe, getIfEsModule } from '.'
+import { replaceRequire, fromRe, getIfEsModule, alwaysCheckES } from '.'
 
 const importRe = /( *import\s+(?:(.+?)\s*,\s*)?\*\s+as\s+(.+?))/
 const re = new RegExp(`${importRe.source}${fromRe.source}`, 'gm')
@@ -14,7 +14,7 @@ const importAs = {
     const { length } = importSeg.split('\n')
     const ws = '\n'.repeat(length - 1)
     let c
-    const isLocal = /^[./]/.test(src)
+    const isLocal = /^[./]/.test(src) && !alwaysCheckES(this.config)
     if (defName) {
       c = [
         `${ws}let ${varName} = ${defName}${r}`,

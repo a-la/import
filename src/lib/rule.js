@@ -1,5 +1,5 @@
 import {
-  getRequire, getDefault, getSource, replaceRequire, fromRe,
+  getRequire, getDefault, getSource, replaceRequire, fromRe, alwaysCheckES,
 } from '.'
 
 const importRe = /^ *import(\s+([^\s,]+)\s*,?)?(\s*{(?:[^}]+)})?/
@@ -42,22 +42,25 @@ const rule = {
       return val
     })
     const source = getSource(s, this.config)
-    const isLocal = /^[./]/.test(source)
-    const { t, ifES } = getDef(defSeg, defName, quotes, source)
+    const isLocal = /^[./]/.test(source) && !alwaysCheckES(this.config)
+    const { t, ifES } = getDef(defSeg, defName, quotes, source, isLocal)
     const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
-    const res = [t, replacedNamed, ...(isLocal ? [] : [ifES])]
+    const res = [
+      t, replacedNamed, ...(isLocal ? [] : [ifES]),
+    ]
       .filter(a => a)
       .join('; ')
     return `${res};`
   },
 }
 
-const getDef = (defSeg, defName, quotes, src) => {
+const getDef = (defSeg, defName, quotes, src, isLocal) => {
   if (!defSeg) return {}
   const req = getRequire(quotes, src)
   const { d, ifES } = getDefault(defName, req)
   const s = replaceDefault(defSeg, d)
-  const t = `let${s}`
+  const o = isLocal ? 'const' : 'let'
+  const t = `${o}${s}`
   return { t, ifES }
 }
 
