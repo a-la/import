@@ -1,8 +1,8 @@
 import ÀLaContext from '@a-la/context'
-import { makeTestSuite } from 'zoroaster'
+import makeTestSuite from '@zoroaster/mask'
 import rule from '../../src'
 
-const ts = makeTestSuite('test/result/config/replacement.md', {
+export default makeTestSuite('test/result/config/replacement.md', {
   context: [ÀLaContext, {
     import: {
       replacement: {
@@ -40,5 +40,3 @@ const esCheck = makeTestSuite('test/result/config/es.md', {
 })
 
 export { esCheck }
-
-export default ts

@@ -1,5 +1,5 @@
 import ALaContext from '@a-la/context'
-import { makeTestSuite } from 'zoroaster'
+import makeTestSuite from '@zoroaster/mask'
 import { join } from 'path'
 import importRule from '../../src/lib/rule'
 import asRule from '../../src/lib/import-as'
@@ -13,7 +13,7 @@ const tests = [
   ['as', asRule, 'as.js'],
 ]
 
-const ts = tests.reduce((acc, [name, rule, file]) => {
+export default tests.reduce((acc, [name, rule, file]) => {
   const path = join('test/result', file)
   const t = makeTestSuite(path, {
     context: ALaContext,
@@ -41,5 +41,3 @@ const ts = tests.reduce((acc, [name, rule, file]) => {
     [name]: t,
   }
 }, {})
-
-export default ts

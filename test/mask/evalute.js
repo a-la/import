@@ -1,9 +1,9 @@
-import { makeTestSuite } from 'zoroaster'
+import makeTestSuite from '@zoroaster/mask'
 import { runInNewContext } from 'vm'
 import ALaContext from '@a-la/context'
 import ÀLaImport from '../../src'
 
-const ts = makeTestSuite('test/result/evaluate', {
+export default makeTestSuite('test/result/evaluate', {
   /**
    * @param {string} input
    * @param {ALaContext}
@@ -18,5 +18,3 @@ const ts = makeTestSuite('test/result/evaluate', {
   context: ALaContext,
   jsonProps: ['expected'],
 })
-
-export default ts

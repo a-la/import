@@ -1,18 +1,18 @@
-// replaces paths
+## replaces paths
 import test from "../../src/lib"
 
 /* expected */
 const test = require("../../build/lib");
 /**/
 
-// replaces paths with literals
+## replaces paths with literals
 import test from `../../src/lib`
 
 /* expected */
 const test = require(`../../build/lib`);
 /**/
 
-// replaces import as
+## replaces import as
 import * as test from "../../src/lib"
 
 /* expected */

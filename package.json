@@ -2,7 +2,8 @@
   "name": "@a-la/import",
   "version": "1.7.0",
   "description": "À La Regex to transpile the import statement into a require call.",
-  "main": "build",
+  "main": "build/index.js",
+  "module": "src/index.js",
   "scripts": {
     "t": "zoroaster -a",
     "test": "yarn t test/spec test/mask",
@@ -12,15 +13,15 @@
     "test-all": "yarn-s test test-build",
     "test-watch": "yarn test -w",
     "lint": "eslint .",
-    "doc": "NODE_DEBUG=doc doc documentary -o README.md",
-    "rec": "NODE_DEBUG=appshot appshot -T 23 -a Terminal -y 150 -f",
-    "e": "node example",
+    "doc": "NODE_DEBUG=doc doc -o README.md",
+    "e": "alanode",
     "example/": "yarn e example/example.js",
     "build": "yarn-s b doc",
     "b": "alamode src -o build -s"
   },
   "files": [
-    "build"
+    "build",
+    "src"
   ],
   "repository": {
     "type": "git",
@@ -57,16 +58,15 @@
   },
   "homepage": "https://github.com/a-la/import#readme",
   "devDependencies": {
-    "@a-la/context": "1.2.3",
+    "@a-la/context": "^1.2.4",
     "@a-la/fixture-alamode": "1.0.0",
     "@a-la/fixture-babel": "1.0.0",
-    "alamode": "1.5.1",
-    "catchment": "3.1.1",
-    "documentary": "1.20.1",
+    "alamode": "^1.9.3",
+    "catchment": "^3.3.0",
+    "documentary": "^1.24.1",
     "eslint-config-artdeco": "1.0.1",
-    "restream": "3.2.1",
+    "restream": "^3.7.1",
     "yarn-s": "1.1.0",
-    "zoroaster": "3.6.2"
-  },
-  "dependencies": {}
+    "zoroaster": "^3.11.6"
+  }
 }
