@@ -25,15 +25,17 @@
 
 /**
  * @param {string} src
+ * @param {!_alamode.Config} config
  */
        const getSource = (src, config = {}) => {
-  const { import: { replacement } = {} } = config
+  if (!config.import) return src
+  const { import: { replacement } } = config
   if (!replacement) return src
   const { from, to } = replacement
   if (from === undefined)
-    throw new Error('No "from" is given option is given for the replacement.')
+    throw new Error('No "from" option is given for the replacement.')
   if (to === undefined )
-    throw new Error('No "to" is given option is given for the replacement.')
+    throw new Error('No "to" option is given for the replacement.')
   const fromRe = new RegExp(replacement.from)
   const res = src.replace(fromRe, replacement.to)
   return res
@@ -43,13 +45,13 @@
        const fromRe = /(\s+from\s+)(?:%%_RESTREAM_STRINGS_REPLACEMENT_(\d+)_%%|%%_RESTREAM_LITERALS_REPLACEMENT_(\d+)_%%)/
 
 /**
- * @param {_alamode.Config} config
+ * @param {!_alamode.Config} config
  */
        const alwaysCheckES = (config = {
-  'import': {},
+  import: {},
 }) => {
   try {
-    return config['import']['esCheck'] == 'always'
+    return config.import.esCheck == 'always'
   } catch (err) {
     return false
   }
@@ -57,7 +59,7 @@
 
 /**
  * @suppress {nonStandardJsDocs}
- * @typedef {import('alamode').Config} _alamode.Config
+ * @typedef {import('alamode/types').Config} _alamode.Config
  */
 
 module.exports.getRequire = getRequire

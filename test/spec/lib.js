@@ -20,14 +20,14 @@ const T = {
       await throws({
         fn: getSource,
         args: [src, { import: { replacement: {} } }],
-        message: 'No "from" is given option is given for the replacement.',
+        message: 'No "from" option is given for the replacement.',
       })
     },
     async 'throws when to is not given'({ src, from }) {
       await throws({
         fn: getSource,
         args: [src, { import: { replacement: { from } } }],
-        message: 'No "to" is given option is given for the replacement.',
+        message: 'No "to" option is given for the replacement.',
       })
     },
     'returns the replaced version of src with RegExp'({ src, from, to }) {

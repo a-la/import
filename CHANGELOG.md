@@ -1,5 +1,10 @@
 ## 24 April 2019
 
+### [1.8.1](https://github.com/a-la/import/compare/v1.8.0...v1.8.1)
+
+- [types] Adjust ÀLaMode types location.
+- [fix] Fix error message for incomplete config (missing to/from).
+
 ### [1.8.0](https://github.com/a-la/import/compare/v1.7.0...v1.8.0)
 
 - [types] Annotate with types.

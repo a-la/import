@@ -89,7 +89,7 @@ module.exports=rule
  */
 /**
  * @suppress {nonStandardJsDocs}
- * @typedef {import('alamode').ÀLaModeReplacer} _alamode.ÀLaModeReplacer
+ * @typedef {import('alamode/types').ÀLaModeReplacer} _alamode.ÀLaModeReplacer
  */
 
 module.exports.re = re
