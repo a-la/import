@@ -1,6 +1,6 @@
 {
   "name": "@a-la/import",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "À La Regex to transpile the import statement into a require call.",
   "main": "build/index.js",
   "module": "src/index.js",
