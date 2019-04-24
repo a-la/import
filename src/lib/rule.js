@@ -1,6 +1,6 @@
 import {
   getRequire, getDefault, getSource, replaceRequire, fromRe, alwaysCheckES,
-} from '.'
+} from './'
 
 const importRe = /^ *import(\s+([^\s,]+)\s*,?)?(\s*{(?:[^}]+)})?/
 const re = new RegExp(`${importRe.source}${fromRe.source}`, 'gm')
@@ -27,31 +27,39 @@ const replaceDefault = (def, replacement) => {
 
 /**
  * A rule to replace `import { method } from 'package'` statement.
- * @type {import('restream').Rule}
+ * @type {_restream.Rule}
  */
 const rule = {
   re,
-  replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
-    const realSrc = ld
-      ? this.markers.literals.map[ld]
-      : this.markers.strings.map[sd]
-    const [, quotes, src] = /(["'`])(.+?)\1/.exec(realSrc)
-    // a special case because regexes are replaced before literals
-    const s = src.replace(this.markers.regexes.regExp, (m, i) => {
-      const val = this.markers.regexes.map[i]
-      return val
-    })
-    const source = getSource(s, this.config)
-    const isLocal = /^[./]/.test(source) && !alwaysCheckES(this.config)
-    const { t, ifES } = getDef(defSeg, defName, quotes, source, isLocal)
-    const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
-    const res = [
-      t, replacedNamed, ...(isLocal ? [] : [ifES]),
-    ]
-      .filter(a => a)
-      .join('; ')
-    return `${res};`
-  },
+  replacement,
+}
+
+/**
+ * @suppress {globalThis}
+ * @type {_alamode.ÀLaModeReplacer}
+ */
+function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
+  const realSrc = ld
+    ? this.markers.literals.map[ld]
+    : this.markers.strings.map[sd]
+  const [, quotes, src] = /** @type {!RegExpResult} */(
+    /(["'`])(.+?)\1/.exec(realSrc)
+  )
+  // a special case because regexes are replaced before literals
+  const s = src.replace(this.markers.regexes.regExp, (m, i) => {
+    const val = this.markers.regexes.map[i]
+    return val
+  })
+  const source = getSource(s, this.config)
+  const isLocal = /^[./]/.test(source) && !alwaysCheckES(this.config)
+  const { t, ifES } = getDef(defSeg, defName, quotes, source, isLocal)
+  const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
+  const res = [
+    t, replacedNamed, ...(isLocal ? [] : [ifES]),
+  ]
+    .filter(a => a)
+    .join('; ')
+  return `${res};`
 }
 
 const getDef = (defSeg, defName, quotes, src, isLocal) => {
@@ -74,3 +82,12 @@ const getNamed = (namedSeg, fromSeg, quotes, src, defName) => {
 
 export default rule
 export { re }
+
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('restream').Rule} _restream.Rule
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('alamode').ÀLaModeReplacer} _alamode.ÀLaModeReplacer
+ */
