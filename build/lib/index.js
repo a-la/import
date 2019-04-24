@@ -1,5 +1,5 @@
        const getRequire = (quotes, src) => {
-  return `require(${quotes}${src}${quotes})`
+  return 'r' + `equire(${quotes}${src}${quotes})`
 }
 
        const getIfEsModule = (name) => {
@@ -14,7 +14,7 @@
   return { d, ifES }
 }
 
-       const replaceRequire = (seg, quotes, src, defName) => {
+       const replaceRequire = (seg, quotes, src, defName = null) => {
   const eq = seg.replace(/(\s+)from(\s+)([\s\S])*/, (m, b, a) => {
     return `${b}=${a}`
   })
@@ -42,13 +42,23 @@
 // temp solution, until restream markers can store only part of regex, e.g. '%RESTREAM_MARKER%' instead of %RESTREAM_MARKER% for a string.
        const fromRe = /(\s+from\s+)(?:%%_RESTREAM_STRINGS_REPLACEMENT_(\d+)_%%|%%_RESTREAM_LITERALS_REPLACEMENT_(\d+)_%%)/
 
-       const alwaysCheckES = (config = {}) => {
+/**
+ * @param {_alamode.Config} config
+ */
+       const alwaysCheckES = (config = {
+  'import': {},
+}) => {
   try {
-    return config.import.esCheck == 'always'
+    return config['import']['esCheck'] == 'always'
   } catch (err) {
     return false
   }
 }
+
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('alamode').Config} _alamode.Config
+ */
 
 module.exports.getRequire = getRequire
 module.exports.getIfEsModule = getIfEsModule

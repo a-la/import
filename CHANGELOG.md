@@ -1,3 +1,10 @@
+## 24 April 2019
+
+### [1.8.0](https://github.com/a-la/import/compare/v1.7.0...v1.8.0)
+
+- [types] Annotate with types.
+- [package] Publish the `module` field.
+
 ## 8 October 2018
 
 ### 1.7.0
