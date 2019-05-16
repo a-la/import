@@ -55,7 +55,8 @@ async function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
     return val
   })
   const source = getSource(s, this.config)
-  const isLocal = await getIsLocal(source, this.config, this.file)
+  if (!this.isLocalCache) this.isLocalCache = {}
+  const isLocal = await getIsLocal(source, this.config, this.file, this.isLocalCache)
   const { t, ifES } = getDef(defSeg, defName, quotes, source, isLocal)
   const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
   const res = [
@@ -66,15 +67,17 @@ async function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
   return `${res};`
 }
 
-const getIsLocal = async (source, config, file) => {
+const getIsLocal = async (source, config, file, cache) => {
   if (alwaysCheckES(config)) return false
   if (isLib(source)) return true
   if (builtinModules.includes(source)) return true
   if (isAlamodeModule(config, source)) return true
+  if (source in cache) return cache[source]
   if (file) try {
     const { 'alamode': alamode } = await fpj(dirname(file), source, {
       fields: ['alamode'],
     })
+    cache[source] = !!alamode
     return alamode
   } catch (err) {
     return false

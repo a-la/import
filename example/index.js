@@ -1,6 +1,6 @@
 /* yarn example/ */
-import ALaContext from '@a-la/context'
-import ALaImport from '../src'
+import ÀLaContext from '@a-la/context'
+import ÀLaImport from '../src'
 
 const STRING = `import aLaMode from 'alamode'
 import ALaImport from "@a-la/import"
@@ -9,7 +9,12 @@ import test from './test'
 `
 
 ;(async () => {
-  const context = new ALaContext()
-  const { result } = await context.stream(ALaImport, STRING)
+  const context = new ÀLaContext(__filename)
+  context.setConfig({
+    import: {
+      alamodeModules: ['alamode', '@a-la/import'],
+    },
+  })
+  const { result } = await context.stream(ÀLaImport, STRING)
   console.log(result)
 })()

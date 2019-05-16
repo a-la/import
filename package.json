@@ -1,7 +1,7 @@
 {
   "name": "@a-la/import",
   "version": "1.8.1",
-  "description": "À La Regex to transpile the import statement into a require call.",
+  "description": "RegExp rules to transpile import statements into require calls (used in ÀLaMode).",
   "main": "build/index.js",
   "module": "src/index.js",
   "scripts": {
@@ -58,7 +58,7 @@
   },
   "homepage": "https://github.com/a-la/import#readme",
   "devDependencies": {
-    "@a-la/context": "^1.2.4",
+    "@a-la/context": "^1.3.0",
     "@a-la/fixture-alamode": "1.0.0",
     "@a-la/fixture-babel": "1.1.1",
     "alamode": "^2.2.0",

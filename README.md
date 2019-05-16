@@ -36,14 +36,18 @@ The _ÀLaImport_ is the default export and an array containing a sequence of rul
 import ÀLaImport from '@a-la/import'
 ```
 
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true" width="25"></a></p>
+
+
+
 ### `ÀLaImport` Sequence
 
 The rule set exported as an array by `ÀLaImport` has multiple regexes and replacer functions to match all possible cases. The replacer functions expect to see the `markers` property on the context, which is set by `alamode` to access cut out strings. The transform can be run using `@a-la/context` which is a lightweight version of `alamode` which mimics its stream functionality.
 
 ```js
 /* yarn example/ */
-import ALaContext from '@a-la/context'
-import ALaImport from '@a-la/import'
+import ÀLaContext from '@a-la/context'
+import ÀLaImport from '@a-la/import'
 
 const STRING = `import aLaMode from 'alamode'
 import ALaImport from "@a-la/import"
@@ -52,18 +56,25 @@ import test from './test'
 `
 
 ;(async () => {
-  const context = new ALaContext()
-  const { result } = await context.stream(ALaImport, STRING)
+  const context = new ÀLaContext(__filename)
+  context.setConfig({
+    import: {
+      alamodeModules: ['alamode', '@a-la/import'],
+    },
+  })
+  const { result } = await context.stream(ÀLaImport, STRING)
   console.log(result)
 })()
 ```
 
 ```js
-let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default;
-let ALaImport = require("@a-la/import"); if (ALaImport && ALaImport.__esModule) ALaImport = ALaImport.default;
+const aLaMode = require('alamode');
+const ALaImport = require("@a-la/import");
 let App = require('koa'); if (App && App.__esModule) App = App.default;
 const test = require('./test');
 ```
+
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/3.svg?sanitize=true" width="25"></a></p>
 
 ### Options
 
@@ -100,9 +111,7 @@ The transform accepts a number of options via the `.alamoderc`.
 
 If `esCheck` is not set, and `alamodeModules` does not contain the module that is being imported, the transform will attempt to find its _package.json_ file, and see if it has the `alamode` property set to true, in which case no _esCheck_ will be appended.
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true"></a></p>
-
-
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/4.svg?sanitize=true"></a></p>
 
 ## Output Example
 
@@ -122,19 +131,19 @@ import def, * as tests from './tests'
 ```
 
 ```js
-let aLaMode = require('alamode'); if (aLaMode && aLaMode.__esModule) aLaMode = aLaMode.default;
+const aLaMode = require('alamode');
 let scopeALaMode = require("@a-la/import"); if (scopeALaMode && scopeALaMode.__esModule) scopeALaMode = scopeALaMode.default;
 
 const { methodA, methodB } = require('alamode');
 const { methodC, methodD: aliasD } = require('alamode');
-let defaultALaMode = require('alamode'); const {
+const defaultALaMode = require('alamode'); const {
   methodE, methodF,
-} = defaultALaMode; if (defaultALaMode && defaultALaMode.__esModule) defaultALaMode = defaultALaMode.default;
+} = defaultALaMode;
 
 const tests = def = require('./tests');
 ```
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/3.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/5.svg?sanitize=true"></a></p>
 
 
 
@@ -188,7 +197,7 @@ let def = require('package'); const {
   def; if (def && def.__esModule) def = def.default;
 ```
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/4.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/6.svg?sanitize=true"></a></p>
 
 ## Checklist
 
@@ -203,7 +212,7 @@ let def = require('package'); const {
 - [ ] `import "module-name";`
 - [ ] `var promise = import(module-name);`
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/5.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/7.svg?sanitize=true"></a></p>
 
 ## TODO
 
