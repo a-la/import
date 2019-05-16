@@ -1,5 +1,9 @@
 ## 16 May 2019
 
+### [1.9.1](https://github.com/a-la/import/compare/v1.9.0...v1.9.1)
+
+- [fix] Only make async rule when the stream supports it.
+
 ### [1.9.0](https://github.com/a-la/import/compare/v1.8.1...v1.9.0)
 
 - [feature] Support check for alamode modules that don't need ES check.
