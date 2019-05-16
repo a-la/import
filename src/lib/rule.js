@@ -42,7 +42,7 @@ const rule = {
  * @suppress {globalThis}
  * @type {_alamode.ÀLaModeReplacer}
  */
-async function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
+function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
   const realSrc = ld
     ? this.markers.literals.map[ld]
     : this.markers.strings.map[sd]
@@ -56,7 +56,17 @@ async function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
   })
   const source = getSource(s, this.config)
   if (!this.isLocalCache) this.isLocalCache = {}
-  const isLocal = await getIsLocal(source, this.config, this.file, this.isLocalCache)
+  if (this.async) {
+    return getIsLocal(source, this.config, this.file, this.isLocalCache)
+      .then((isLocal) => {
+        return finish(namedSeg, fromSeg, defSeg, defName, quotes, source, isLocal)
+      })
+  }
+  const isLocal = syncGetIsLocal(source, this.config)
+  return finish(namedSeg, fromSeg, defSeg, defName, quotes, source, isLocal)
+}
+
+const finish = (namedSeg, fromSeg, defSeg, defName, quotes, source, isLocal) => {
   const { t, ifES } = getDef(defSeg, defName, quotes, source, isLocal)
   const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
   const res = [
@@ -67,11 +77,16 @@ async function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
   return `${res};`
 }
 
-const getIsLocal = async (source, config, file, cache) => {
+const syncGetIsLocal = (source, config) => {
   if (alwaysCheckES(config)) return false
   if (isLib(source)) return true
   if (builtinModules.includes(source)) return true
-  if (isAlamodeModule(config, source)) return true
+  if (isAlamodeModule(source, config)) return true
+}
+
+const getIsLocal = async (source, config, file, cache) => {
+  const sync = syncGetIsLocal(source, config)
+  if (sync) return true
   if (source in cache) return cache[source]
   if (file) try {
     const { 'alamode': alamode } = await fpj(dirname(file), source, {

@@ -57,11 +57,12 @@
   }
 }
 /**
+ * @param {string} name
  * @param {!_alamode.Config} config
  */
-       const isAlamodeModule = (config = {
+       const isAlamodeModule = (name, config = {
   import: {},
-}, name) => {
+}) => {
   try {
     return config.import.alamodeModules.includes(name)
   } catch (err) {
