@@ -1,6 +1,10 @@
 const {
-  getRequire, getDefault, getSource, replaceRequire, fromRe, alwaysCheckES,
+  getRequire, getDefault, getSource, replaceRequire, fromRe,
+  alwaysCheckES, isAlamodeModule,
 } = require('./');
+const fpj = require('fpj');
+const { dirname } = require('path');
+const { builtinModules } = require('module');
 
 const importRe = /^ *import(\s+([^\s,]+)\s*,?)?(\s*{(?:[^}]+)})?/
 const re = new RegExp(`${importRe.source}${fromRe.source}`, 'gm')
@@ -18,10 +22,10 @@ const aliasesToDestructuring = (namedSeg) => {
     })
   return mm
 }
-const replaceDefault = (def, replacement) => {
+const replaceDefault = (def, rep) => {
   const d = def
     .replace(',', '')
-    .replace(/([^\s]+)/, replacement)
+    .replace(/([^\s]+)/, rep)
   return d
 }
 
@@ -38,7 +42,7 @@ const rule = {
  * @suppress {globalThis}
  * @type {_alamode.ÀLaModeReplacer}
  */
-function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
+async function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
   const realSrc = ld
     ? this.markers.literals.map[ld]
     : this.markers.strings.map[sd]
@@ -51,7 +55,7 @@ function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
     return val
   })
   const source = getSource(s, this.config)
-  const isLocal = /^[./]/.test(source) && !alwaysCheckES(this.config)
+  const isLocal = await getIsLocal(source, this.config, this.file)
   const { t, ifES } = getDef(defSeg, defName, quotes, source, isLocal)
   const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)
   const res = [
@@ -61,6 +65,23 @@ function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
     .join('; ')
   return `${res};`
 }
+
+const getIsLocal = async (source, config, file) => {
+  if (alwaysCheckES(config)) return false
+  if (isLib(source)) return true
+  if (builtinModules.includes(source)) return true
+  if (isAlamodeModule(config, source)) return true
+  if (file) try {
+    const { 'alamode': alamode } = await fpj(dirname(file), source, {
+      fields: ['alamode'],
+    })
+    return alamode
+  } catch (err) {
+    return false
+  }
+}
+
+const isLib = s => /^[./]/.test(s)
 
 const getDef = (defSeg, defName, quotes, src, isLocal) => {
   if (!defSeg) return {}
@@ -90,6 +111,10 @@ module.exports=rule
 /**
  * @suppress {nonStandardJsDocs}
  * @typedef {import('alamode/types').ÀLaModeReplacer} _alamode.ÀLaModeReplacer
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('alamode/types').Config} _alamode.Config
  */
 
 module.exports.re = re

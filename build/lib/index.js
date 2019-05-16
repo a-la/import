@@ -56,6 +56,18 @@
     return false
   }
 }
+/**
+ * @param {!_alamode.Config} config
+ */
+       const isAlamodeModule = (config = {
+  import: {},
+}, name) => {
+  try {
+    return config.import.alamodeModules.includes(name)
+  } catch (err) {
+    return false
+  }
+}
 
 /**
  * @suppress {nonStandardJsDocs}
@@ -69,3 +81,4 @@ module.exports.replaceRequire = replaceRequire
 module.exports.getSource = getSource
 module.exports.fromRe = fromRe
 module.exports.alwaysCheckES = alwaysCheckES
+module.exports.isAlamodeModule = isAlamodeModule
