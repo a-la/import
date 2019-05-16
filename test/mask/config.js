@@ -12,31 +12,43 @@ export default makeTestSuite('test/result/config/replacement.md', {
     },
   }],
   /**
-   * @param {string} input
    * @param {ÀLaContext} param1
    */
-  async getResults(input, { stream, setConfig }, config) {
+  async getResults({ stream, setConfig }, config) {
     setConfig(config)
-    const { result } = await stream(rule, input)
+    const { result } = await stream(rule, this.input)
     return result
   },
 })
 
-const esCheck = makeTestSuite('test/result/config/es.md', {
+export const esCheck = makeTestSuite('test/result/config/es.md', {
   context: [ÀLaContext, {
     import: {
       esCheck: 'always',
     },
   }],
   /**
-   * @param {string} input
    * @param {ÀLaContext} param1
    */
-  async getResults(input, { stream, setConfig }, config) {
+  async getResults({ stream, setConfig }, config) {
     setConfig(config)
-    const { result } = await stream(rule, input)
+    const { result } = await stream(rule, this.input)
     return result
   },
 })
 
-export { esCheck }
+export const alamodeModules = makeTestSuite('test/result/config/alamode-modules.md', {
+  context: [ÀLaContext, {
+    import: {
+      alamodeModules: ['test'],
+    },
+  }],
+  /**
+   * @param {ÀLaContext} param1
+   */
+  async getResults({ stream, setConfig }, config) {
+    setConfig(config)
+    const { result } = await stream(rule, this.input)
+    return result
+  },
+})

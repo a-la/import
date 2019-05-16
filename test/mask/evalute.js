@@ -1,20 +1,19 @@
 import makeTestSuite from '@zoroaster/mask'
 import { runInNewContext } from 'vm'
-import ALaContext from '@a-la/context'
+import ÀLaContext from '@a-la/context'
 import ÀLaImport from '../../src'
 
 export default makeTestSuite('test/result/evaluate', {
   /**
-   * @param {string} input
-   * @param {ALaContext}
+   * @param {ÀLaContext}
    */
-  async getResults(input, { stream }) {
-    const { result } = await stream(ÀLaImport, input)
+  async getResults({ stream }) {
+    const { result } = await stream(ÀLaImport, this.input)
     const sandbox = { require, test: {} }
     runInNewContext(result, sandbox)
     const { test } = sandbox
     return test
   },
-  context: ALaContext,
+  context: ÀLaContext,
   jsonProps: ['expected'],
 })

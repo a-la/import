@@ -1,4 +1,4 @@
-import { equal, throws } from 'zoroaster/assert'
+import { equal, throws } from '@zoroaster/assert'
 import { getSource } from '../../src/lib'
 
 const T = {

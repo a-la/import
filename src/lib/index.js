@@ -56,6 +56,18 @@ export const alwaysCheckES = (config = {
     return false
   }
 }
+/**
+ * @param {!_alamode.Config} config
+ */
+export const isAlamodeModule = (config = {
+  import: {},
+}, name) => {
+  try {
+    return config.import.alamodeModules.includes(name)
+  } catch (err) {
+    return false
+  }
+}
 
 /**
  * @suppress {nonStandardJsDocs}

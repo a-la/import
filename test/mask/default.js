@@ -1,4 +1,4 @@
-import ALaContext from '@a-la/context'
+import ÀLaContext from '@a-la/context'
 import makeTestSuite from '@zoroaster/mask'
 import { join } from 'path'
 import importRule from '../../src/lib/rule'
@@ -16,23 +16,21 @@ const tests = [
 export default tests.reduce((acc, [name, rule, file]) => {
   const path = join('test/result', file)
   const t = makeTestSuite(path, {
-    context: ALaContext,
+    context: ÀLaContext,
     /**
-     * @param {string} input
-     * @param {ALaContext} param1
+     * @param {ÀLaContext} param1
      */
-    async getResults(input, { stream }) {
-      const { result } = await stream(rule, input)
+    async getResults({ stream }) {
+      const { result } = await stream(rule, this.input)
       return result
     },
     /**
-     * @param {string} input
-     * @param {ALaContext} param1
+     * @param {ÀLaContext} param1
      */
-    getThrowsConfig(input, { stream }) {
+    getThrowsConfig({ stream }) {
       return {
         fn: stream,
-        args: [rule, input],
+        args: [rule, this.input],
       }
     },
   })
