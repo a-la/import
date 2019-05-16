@@ -119,7 +119,7 @@ The set of rules changes `import` to `require` statements. When importing a defa
 
 ```js
 import aLaMode from 'alamode'
-import scopeALaMode from "@a-la/import"
+import Koa from "koa"
 
 import { methodA, methodB } from 'alamode'
 import { methodC, methodD as aliasD } from 'alamode'
@@ -132,7 +132,7 @@ import def, * as tests from './tests'
 
 ```js
 const aLaMode = require('alamode');
-let scopeALaMode = require("@a-la/import"); if (scopeALaMode && scopeALaMode.__esModule) scopeALaMode = scopeALaMode.default;
+let Koa = require("koa"); if (Koa && Koa.__esModule) Koa = Koa.default;
 
 const { methodA, methodB } = require('alamode');
 const { methodC, methodD: aliasD } = require('alamode');

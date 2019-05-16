@@ -1,5 +1,5 @@
 import aLaMode from 'alamode'
-import scopeALaMode from "@a-la/import"
+import Koa from "koa"
 
 import { methodA, methodB } from 'alamode'
 import { methodC, methodD as aliasD } from 'alamode'
