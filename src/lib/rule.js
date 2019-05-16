@@ -72,7 +72,7 @@ const getIsLocal = async (source, config, file) => {
   if (builtinModules.includes(source)) return true
   if (isAlamodeModule(config, source)) return true
   if (file) try {
-    const { 'alamode': alamode } = await fpj(dirname(file), file, {
+    const { 'alamode': alamode } = await fpj(dirname(file), source, {
       fields: ['alamode'],
     })
     return alamode
