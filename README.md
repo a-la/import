@@ -2,21 +2,21 @@
 
 [![npm version](https://badge.fury.io/js/%40a-la%2Fimport.svg)](https://npmjs.org/package/@a-la/import)
 
-`@a-la/import` is a a set of rules for [`alamode`](https://alamode.cc) to transpile the `import` statement into a `require` call in Node.js.
+`@a-la/import` is a a set of rules for [`alamode`](https://alamode.cc) to transpile `import` statements into `require` calls in Node.JS.
 
-_À La Mode_ is a RegExp-based transpiler which works faster than AST-based transpilers such as `@babel`, has fewer dependencies, and occupies less disk space.
+_ÀLaMode_ is a RegExp-based transpiler which works faster than AST-based transpilers such as `@babel`, has no dependencies and occupies less disk space.
 
 ```sh
-yarn add -E @a-la/import
+yarn add @a-la/import
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/0.svg?sanitize=true"></a></p>
 
 ## Table Of Contents
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-  * [`ALaImport` Sequence](#alaimport-sequence)
+  * [`ÀLaImport` Sequence](#àlaimport-sequence)
   * [Options](#options)
 - [Output Example](#output-example)
 - [Lines Preservation](#lines-preservation)
@@ -26,19 +26,19 @@ yarn add -E @a-la/import
 - [TODO](#todo)
 - [Copyright](#copyright)
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/1.svg?sanitize=true"></a></p>
 
 ## API
 
-The _ALaImport_ is the default export and an array containing a sequence of rules for [_Replaceable_](https://github.com/artdecocode/restream#replaceable-class).
+The _ÀLaImport_ is the default export and an array containing a sequence of rules for [_Replaceable_](https://github.com/artdecocode/restream#replaceable-class).
 
 ```js
-import ALaImport from '@a-la/import'
+import ÀLaImport from '@a-la/import'
 ```
 
-### `ALaImport` Sequence
+### `ÀLaImport` Sequence
 
-The rule set exported as an array by `ALaImport` has multiple regexes and replacer functions to match all possible cases. The replacer functions expect to see the `matchers` property on the context, which is set by `alamode` to access cut out strings. The transform can be run using `@a-la/context` which is a lightweight version of `alamode` which mimics its stream functionality.
+The rule set exported as an array by `ÀLaImport` has multiple regexes and replacer functions to match all possible cases. The replacer functions expect to see the `markers` property on the context, which is set by `alamode` to access cut out strings. The transform can be run using `@a-la/context` which is a lightweight version of `alamode` which mimics its stream functionality.
 
 ```js
 /* yarn example/ */
@@ -69,7 +69,7 @@ const test = require('./test');
 
 The transform accepts a number of options via the `.alamoderc`.
 
-- `replacement` option is used to substitute the name or path of an imported module.
+- The _replacement_ option is used to substitute the name or path of an imported module.
     ```json5
     {
       "env": {
@@ -84,7 +84,7 @@ The transform accepts a number of options via the `.alamoderc`.
       }
     }
     ```
-- `esCheck` option is used to always enforce the `if (mod.__esModule)` check -- by default, this is switched off for local imports, but is added when requiring external packages to make it compatible with _Babel_ and _TypeScript_.
+- The _esCheck_ option is used to always enforce the `if (mod.__esModule)` check &mdash; by default, this check is switched off for local imports, but is added when requiring external packages to make it compatible with _Babel_ and _TypeScript_.
     ```json5
     {
       "env": {
@@ -96,14 +96,17 @@ The transform accepts a number of options via the `.alamoderc`.
       }
     }
     ```
+- The _alamodeModules_ array contains packages known to be compiled with ÀLAMode, or traditional packages that didn't use _Babel_ for compilation, so that the `if (mod.__esModule)` is not required.
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
+If `esCheck` is not set, and `alamodeModules` does not contain the module that is being imported, the transform will attempt to find its _package.json_ file, and see if it has the `alamode` property set to true, in which case no _esCheck_ will be appended.
+
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true"></a></p>
 
 
 
 ## Output Example
 
-The set of rules changes `import` to `require` statements. When importing a default module, a check will be made to see if it was transpiled with `Babel` which is indicated by the presence of the `__esModule` property, and if it was, then the `default` property is reassinged to the variable.
+The set of rules changes `import` to `require` statements. When importing a default export from a module, a check will included to see if it was transpiled with `Babel` which is indicated by the presence of the `__esModule` property, and if it was, then the `default` property is reassigned to the variable.
 
 ```js
 import aLaMode from 'alamode'
@@ -131,7 +134,7 @@ let defaultALaMode = require('alamode'); const {
 const tests = def = require('./tests');
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/3.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/3.svg?sanitize=true"></a></p>
 
 
 
@@ -185,7 +188,7 @@ let def = require('package'); const {
   def; if (def && def.__esModule) def = def.default;
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/4.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/4.svg?sanitize=true"></a></p>
 
 ## Checklist
 
@@ -200,11 +203,10 @@ let def = require('package'); const {
 - [ ] `import "module-name";`
 - [ ] `var promise = import(module-name);`
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/5.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/5.svg?sanitize=true"></a></p>
 
 ## TODO
 
-- [ ] Add an option to ignore the `__esModule` check for specified packages.
 - [ ] Better `from 'package'` handling when matchers' logic is updated in the `restream`.
 
 ## Copyright
@@ -227,4 +229,4 @@ let def = require('package'); const {
   </tr>
 </table>
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/-1.svg?sanitize=true"></a></p>

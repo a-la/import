@@ -1,6 +1,6 @@
 ## Output Example
 
-The set of rules changes `import` to `require` statements. When importing a default module, a check will be made to see if it was transpiled with `Babel` which is indicated by the presence of the `__esModule` property, and if it was, then the `default` property is reassinged to the variable.
+The set of rules changes `import` to `require` statements. When importing a default export from a module, a check will included to see if it was transpiled with `Babel` which is indicated by the presence of the `__esModule` property, and if it was, then the `default` property is reassigned to the variable.
 
 %EXAMPLE: example/imports%
 

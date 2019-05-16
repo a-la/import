@@ -2,12 +2,12 @@
 
 %NPM: @a-la/import%
 
-`@a-la/import` is a a set of rules for [`alamode`](https://alamode.cc) to transpile the `import` statement into a `require` call in Node.js.
+`@a-la/import` is a a set of rules for [`alamode`](https://alamode.cc) to transpile `import` statements into `require` calls in Node.JS.
 
-_À La Mode_ is a RegExp-based transpiler which works faster than AST-based transpilers such as `@babel`, has fewer dependencies, and occupies less disk space.
+_ÀLaMode_ is a RegExp-based transpiler which works faster than AST-based transpilers such as `@babel`, has no dependencies and occupies less disk space.
 
 ```sh
-yarn add -E @a-la/import
+yarn add @a-la/import
 ```
 
 %~%

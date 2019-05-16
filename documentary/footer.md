@@ -37,7 +37,6 @@ When there is a default import along with named once, the line numbers will be r
 
 ## TODO
 
-- [ ] Add an option to ignore the `__esModule` check for specified packages.
 - [ ] Better `from 'package'` handling when matchers' logic is updated in the `restream`.
 
 ## Copyright
