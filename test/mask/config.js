@@ -52,3 +52,23 @@ export const alamodeModules = makeTestSuite('test/result/config/alamode-modules.
     return result
   },
 })
+
+export const stdlib = makeTestSuite('test/result/config/stdlib', {
+  context: [ÀLaContext, {
+    import: {
+      stdlib: {
+        path: 'stdlib.js',
+        packages: ['test'],
+      },
+    },
+  }],
+  /**
+   * @param {ÀLaContext} param1
+   */
+  async getResults({ stream, setConfig, setFile }, config) {
+    setFile('src/test.js')
+    setConfig(config)
+    const { result } = await stream(rule, this.input)
+    return result
+  },
+})

@@ -3,7 +3,7 @@ import {
   alwaysCheckES, isAlamodeModule,
 } from './'
 import fpj from 'fpj'
-import { dirname } from 'path'
+import { dirname, relative } from 'path'
 import { builtinModules } from 'module'
 
 const importRe = /^ *import(\s+([^\s,]+)\s*,?)?(\s*{(?:[^}]+)})?/
@@ -54,7 +54,20 @@ function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
     const val = this.markers.regexes.map[i]
     return val
   })
-  const source = getSource(s, this.config)
+  const stdlib = getStdlib(this.file, src, this.config)
+  const source = stdlib || getSource(s, this.config)
+  if (stdlib) {
+    if (!namedSeg) {
+      namedSeg = defSeg.replace(/(\S+)/, '{ $1 }')
+      defSeg = undefined
+      defName = undefined
+    } else if (defSeg) {
+      namedSeg = namedSeg.replace(/{/, `{ ${defName},`)
+      namedSeg = defSeg.replace(/\S/g, ' ') + namedSeg
+      defSeg = undefined
+      defName = undefined
+    } // if just named, leave as
+  }
   if (!this.isLocalCache) this.isLocalCache = {}
   if (this.async) {
     return getIsLocal(source, this.config, this.file, this.isLocalCache)
@@ -64,6 +77,23 @@ function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
   }
   const isLocal = syncGetIsLocal(source, this.config)
   return finish(namedSeg, fromSeg, defSeg, defName, quotes, source, isLocal)
+}
+
+/**
+ * @param {string} file Relative path to the current file
+ * @param {string} src Path to import.
+ * @param {Object} [config] ÀLaMode configuration.
+ */
+const getStdlib = (file, src, config = {}) => {
+  if (!config.import) return null
+  const { import: { stdlib } } = config
+  if (stdlib) {
+    const { packages, path } = stdlib
+    if (!packages.includes(src)) return src
+    const rel = relative(dirname(file), path).replace(/.js$/, '')
+    return rel
+  }
+  return null
 }
 
 const finish = (namedSeg, fromSeg, defSeg, defName, quotes, source, isLocal) => {
