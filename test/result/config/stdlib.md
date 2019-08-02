@@ -29,3 +29,10 @@ import test,
 const      
   { test, test1 } = require('../stdlib');
 /**/
+
+## keeps unaffected imports
+import rexml from 'rexml'
+
+/* expected */
+let rexml = require('rexml'); if (rexml && rexml.__esModule) rexml = rexml.default;
+/**/

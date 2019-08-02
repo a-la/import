@@ -1,20 +1,22 @@
-       const getRequire = (quotes, src) => {
+const { relative, dirname } = require('path');
+
+const getRequire = (quotes, src) => {
   return 'r' + `equire(${quotes}${src}${quotes})`
 }
 
-       const getIfEsModule = (name) => {
+const getIfEsModule = (name) => {
   const s = `if (${name} && ${name}.__esModule) ${name} = ${name}.default`
   return s
 }
 
-       const getDefault = (name, req) => {
+const getDefault = (name, req) => {
   if (!name) return
   const ifES = getIfEsModule(name)
   const d = `${name} = ${req}`
   return { d, ifES }
 }
 
-       const replaceRequire = (seg, quotes, src, defName = null) => {
+const replaceRequire = (seg, quotes, src, defName = null) => {
   const eq = seg.replace(/(\s+)from(\s+)([\s\S])*/, (m, b, a) => {
     return `${b}=${a}`
   })
@@ -27,7 +29,7 @@
  * @param {string} src
  * @param {!_alamode.Config} config
  */
-       const getSource = (src, config = {}) => {
+const getSource = (src, config = {}) => {
   if (!config.import) return src
   const { import: { replacement } } = config
   if (!replacement) return src
@@ -42,12 +44,12 @@
 }
 
 // temp solution, until restream markers can store only part of regex, e.g. '%RESTREAM_MARKER%' instead of %RESTREAM_MARKER% for a string.
-       const fromRe = /(\s+from\s+)(?:%%_RESTREAM_STRINGS_REPLACEMENT_(\d+)_%%|%%_RESTREAM_LITERALS_REPLACEMENT_(\d+)_%%)/
+const fromRe = /(\s+from\s+)(?:%%_RESTREAM_STRINGS_REPLACEMENT_(\d+)_%%|%%_RESTREAM_LITERALS_REPLACEMENT_(\d+)_%%)/
 
 /**
  * @param {!_alamode.Config} config
  */
-       const alwaysCheckES = (config = {
+const alwaysCheckES = (config = {
   import: {},
 }) => {
   try {
@@ -60,7 +62,7 @@
  * @param {string} name
  * @param {!_alamode.Config} config
  */
-       const isAlamodeModule = (name, config = {
+const isAlamodeModule = (name, config = {
   import: {},
 }) => {
   try {

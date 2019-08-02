@@ -89,7 +89,7 @@ const getStdlib = (file, src, config = {}) => {
   const { import: { stdlib } } = config
   if (stdlib) {
     const { packages, path } = stdlib
-    if (!packages.includes(src)) return src
+    if (!packages.includes(src)) return null
     const rel = relative(dirname(file), path).replace(/.js$/, '')
     return rel
   }
