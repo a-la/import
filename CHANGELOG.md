@@ -1,5 +1,9 @@
 ## 3 August 2019
 
+### [1.10.1](https://github.com/a-la/import/compare/v1.10.0...v1.10.1)
+
+- [fix] Keep imports unaffected by `stdlib`.
+
 ### [1.10.0](https://github.com/a-la/import/compare/v1.9.1...v1.10.0)
 
 - [feature] Allow to pass `stdlib` configc.
