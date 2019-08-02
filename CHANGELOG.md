@@ -1,3 +1,9 @@
+## 3 August 2019
+
+### [1.10.0](https://github.com/a-la/import/compare/v1.9.1...v1.10.0)
+
+- [feature] Allow to pass `stdlib` configc.
+
 ## 16 May 2019
 
 ### [1.9.1](https://github.com/a-la/import/compare/v1.9.0...v1.9.1)
