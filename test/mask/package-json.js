@@ -3,7 +3,7 @@ import { Replaceable } from 'restream'
 import rules from '../../src'
 import makeRules from '@a-la/markers'
 
-export default makeTestSuite('test/result/package-json.md', {
+export default makeTestSuite('test/result/package-json', {
   async getTransform() {
     const { rules: allRules, markers } = makeRules(
       Array.isArray(rules) ? rules : [rules],
