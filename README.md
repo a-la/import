@@ -1,6 +1,6 @@
 # @a-la/import
 
-[![npm version](https://badge.fury.io/js/%40a-la%2Fimport.svg)](https://npmjs.org/package/@a-la/import)
+[![npm version](https://badge.fury.io/js/%40a-la%2Fimport.svg)](https://www.npmjs.com/package/@a-la/import)
 
 `@a-la/import` is a a set of rules for [`alamode`](https://alamode.cc) to transpile `import` statements into `require` calls in Node.JS.
 
@@ -239,19 +239,12 @@ let def = require('package'); const {
 <table>
   <tr>
     <th>
-      <a href="https://artd.eco">
+      <a href="https://www.artd.eco">
         <img width="100" src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png"
           alt="Art Deco">
       </a>
     </th>
-    <th>© <a href="https://artd.eco">Art Deco</a> for <a href="https://alamode.cc">À La Mode</a> 2019</th>
-    <th>
-      <a href="https://www.technation.sucks" title="Tech Nation Visa">
-        <img width="100" src="https://raw.githubusercontent.com/idiocc/cookies/master/wiki/arch4.jpg"
-          alt="Tech Nation Visa">
-      </a>
-    </th>
-    <th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th>
+    <th>© <a href="https://www.artd.eco">Art Deco™</a> for <a href="https://alamode.cc">À La Mode</a> 2020</th>
   </tr>
 </table>
 

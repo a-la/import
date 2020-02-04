@@ -1,5 +1,3 @@
-const { relative, dirname } = require('path');
-
 const getRequire = (quotes, src) => {
   return 'r' + `equire(${quotes}${src}${quotes})`
 }

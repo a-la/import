@@ -1,3 +1,9 @@
+## 4 February 2020
+
+### [1.10.2](https://github.com/a-la/import/compare/v1.10.1...v1.10.2)
+
+- [fix] Fix `\` on windows for stdlib.
+
 ## 3 August 2019
 
 ### [1.10.1](https://github.com/a-la/import/compare/v1.10.0...v1.10.1)

@@ -1,5 +1,3 @@
-import { relative, dirname } from 'path'
-
 export const getRequire = (quotes, src) => {
   return 'r' + `equire(${quotes}${src}${quotes})`
 }
