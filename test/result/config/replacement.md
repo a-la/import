@@ -5,6 +5,13 @@ import test from "../../src/lib"
 const test = require("../../build/lib");
 /**/
 
+## replaces blank paths
+import "../../src/lib"
+
+/* expected */
+require("../../build/lib");
+/**/
+
 ## replaces paths with literals
 import test from `../../src/lib`
 

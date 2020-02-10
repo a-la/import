@@ -1,3 +1,5 @@
+import { getSource } from './'
+
 const fromRe = /(%%_RESTREAM_STRINGS_REPLACEMENT_(\d+)_%%|%%_RESTREAM_LITERALS_REPLACEMENT_(\d+)_%%)/
 
 const importRe = /(import\s+)/
@@ -15,9 +17,17 @@ const blank = {
  * @suppress {globalThis}
  * @type {_alamode.ÀLaModeReplacer}
  */
-function replacement(match, i, r) {
-  let rr = i.replace(/ /g, '').replace('import', 'require(')
-  rr += r + ');'
+function replacement(match, Import, _, sd) {
+  const realSrc = this.markers.strings.map[sd]
+  const [, quotes, src] = /** @type {!RegExpResult} */(
+    /(["'`])(.+?)\1/.exec(realSrc)
+  )
+
+  let rr = Import.replace(/ /g, '').replace('import', 'require(')
+
+  const source = getSource(src, this.config)
+
+  rr += `${quotes}${source}${quotes});`
   return rr
 }
 
