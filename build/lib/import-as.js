@@ -1,4 +1,4 @@
-const { replaceRequire, fromRe, getIfEsModule, alwaysCheckES } = require('./');
+const { replaceRequire, fromRe, getIfEsModule, alwaysCheckES, getSource } = require('./');
 
 const importRe = /( *import\s+(?:(.+?)\s*,\s*)?\*\s+as\s+(.+?))/
 const re = new RegExp(`${importRe.source}${fromRe.source}`, 'gm')
@@ -20,11 +20,12 @@ function replacement(match, importSeg, defName, varName, fromSeg, sd, ld) {
   const [, quotes, src] = /** @type {!RegExpResult} */ (
     /(["'`])(.+?)\1/.exec(realSrc)
   )
-  const r = replaceRequire(fromSeg, quotes, src)
+  const source = getSource(src, this.config)
+  const r = replaceRequire(fromSeg, quotes, source)
   const { length } = importSeg.split('\n')
   const ws = '\n'.repeat(length - 1)
   let c
-  const isLocal = /^[./]/.test(src) && !alwaysCheckES(this.config)
+  const isLocal = /^[./]/.test(source) && !alwaysCheckES(this.config)
   const o = isLocal ? 'const' : 'let'
   if (defName) {
     c = [

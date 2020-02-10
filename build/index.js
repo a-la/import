@@ -1,4 +1,5 @@
 const rule = require('./lib/rule');
+const blank = require('./lib/blank');
 const importAs = require('./lib/import-as');
 
 /**
@@ -6,6 +7,7 @@ const importAs = require('./lib/import-as');
  */
 const seq = [
   rule,
+  blank,
   importAs,
 ]
 

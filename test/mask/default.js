@@ -11,7 +11,7 @@ const tests = [
   ['integration', importsSeq, 'integration.js'],
   ['line numbers', importsSeq, 'line-numbers.js'],
   ['as', asRule, 'as.js'],
-  ['!no-name', importsSeq, 'no-name.js'],
+  ['no-name', importsSeq, 'no-name.js'],
 ]
 
 export default tests.reduce((acc, [name, rule, file]) => {
