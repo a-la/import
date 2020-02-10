@@ -58,10 +58,10 @@
   resolved "https://registry.yarnpkg.com/@zoroaster/mask/-/mask-2.5.0.tgz#de128987743d71376485ba9b34977d49e18cde92"
   integrity sha512-GuEHgVneq0MkSHBcF7YgTAuk42/pWJnvMPvbOsUXmq3m2FcSe1v788Bfw896RzZ7p6LWq11xnq48YOkhcy5jLA==
 
-alamode@^3.3.3, alamode@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/alamode/-/alamode-3.4.0.tgz#6cec4b05bc41978181e4b7c5880b8fc1ea03e3c0"
-  integrity sha512-WklwW4NXdjrDf6xvOXQTzlM7I7XYILdFYC5ProLy69LZWHvhRkgOSFNXy0TB9YCpoqYZ7JttR/zp3LSFc6MAOQ==
+alamode@^3.3.3, alamode@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/alamode/-/alamode-3.4.1.tgz#69067860e42c366a539d5461a1657400fd8a0a80"
+  integrity sha512-pQl2V/OwPbXGCgFnCZ1SEHiD2KK2L7Sj0DfX3nVKMpyDv7hBRsZMDz87l/rKtDI6IUBJ0Hjmbcw28jivm4jCTg==
 
 catchment@3.3.0, catchment@^3.3.0:
   version "3.3.0"
@@ -71,12 +71,12 @@ catchment@3.3.0, catchment@^3.3.0:
     "@artdeco/clean-stack" "^1.1.1"
     erotic "^2.1.0"
 
-documentary@^1.35.12:
-  version "1.35.12"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.35.12.tgz#3324f1c940de216f074077c160c97906e052e6ec"
-  integrity sha512-krPr4ck9cSTBmODkNAnNCY2cfhVH+7a2F9dFFw97Aii7YA1AUrffabMLWfhU/fMxPGZAd7to88EM5UkwC0otpA==
+documentary@^1.35.13:
+  version "1.35.13"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.35.13.tgz#ff3db9b622bd8f903dd9824fb087f3db5d2d7c15"
+  integrity sha512-mcrEHv4hS2kq174N1dVHT7cJOS4Qz39XCBW/9textUh53eL6pAUumMDf4FpuhEFrbHoGumvr4ty7Y5INO2onWA==
   dependencies:
-    alamode "^3.3.3"
+    alamode "^3.4.1"
     preact "8.5.3"
     typal "^1.26.2"
 
