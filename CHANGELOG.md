@@ -1,3 +1,10 @@
+## 10 February 2020
+
+### [1.11.0](https://github.com/a-la/import/compare/v1.10.2...v1.11.0)
+
+- [feature] Implement blank imports transpilation.
+- [fix] Rename `import * as _` to configured.
+
 ## 4 February 2020
 
 ### [1.10.2](https://github.com/a-la/import/compare/v1.10.1...v1.10.2)
