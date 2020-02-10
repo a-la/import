@@ -1,6 +1,6 @@
 {
   "name": "@a-la/import",
-  "version": "1.10.2",
+  "version": "1.11.0",
   "description": "RegExp rules to transpile import statements into require calls (used in ÀLaMode).",
   "main": "build/index.js",
   "module": "src/index.js",
