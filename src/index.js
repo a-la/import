@@ -1,4 +1,5 @@
 import rule from './lib/rule'
+import blank from './lib/blank'
 import importAs from './lib/import-as'
 
 /**
@@ -6,6 +7,7 @@ import importAs from './lib/import-as'
  */
 const seq = [
   rule,
+  blank,
   importAs,
 ]
 
