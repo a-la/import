@@ -13,14 +13,15 @@ const importAs = {
  * @suppress {globalThis}
  * @type {_alamode.ÀLaModeReplacer}
  */
-function replacement(match, importSeg, defName, varName, fromSeg, sd, ld) {
-  const realSrc = ld
-    ? this.markers.literals.map[ld]
-    : this.markers.strings.map[sd]
+function replacement(match, importSeg, defName, varName, fromSeg, sd) {
+  const realSrc = this.markers.strings.map[sd]
   const [, quotes, src] = /** @type {!RegExpResult} */ (
     /(["'`])(.+?)\1/.exec(realSrc)
   )
   const source = getSource(src, this.config)
+  if (this.renameOnly) {
+    return match.replace(/%%_RESTREAM_STRINGS_REPLACEMENT_\d+_%%/, `${quotes}${source}${quotes}`)
+  }
   const r = replaceRequire(fromSeg, quotes, source)
   const { length } = importSeg.split('\n')
   const ws = '\n'.repeat(length - 1)

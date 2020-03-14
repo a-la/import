@@ -42,20 +42,18 @@ const rule = {
  * @suppress {globalThis}
  * @type {_alamode.ÀLaModeReplacer}
  */
-function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
-  const realSrc = ld
-    ? this.markers.literals.map[ld]
-    : this.markers.strings.map[sd]
+function replacement(match, defSeg, defName, namedSeg, fromSeg, sd) {
+  const realSrc = this.markers.strings.map[sd]
   const [, quotes, src] = /** @type {!RegExpResult} */(
     /(["'`])(.+?)\1/.exec(realSrc)
   )
-  // a special case because regexes are replaced before literals
-  const s = src.replace(this.markers.regexes.regExp, (m, i) => {
-    const val = this.markers.regexes.map[i]
-    return val
-  })
+  if (this.renameOnly) {
+    const renamed = getSource(src, this.config)
+    return match.replace(/%%_RESTREAM_STRINGS_REPLACEMENT_\d+_%%/, `${quotes}${renamed}${quotes}`)
+  }
+
   const stdlib = getStdlib(this.file, src, this.config)
-  const source = stdlib || getSource(s, this.config)
+  const source = stdlib || getSource(src, this.config)
   if (stdlib) {
     if (!namedSeg) {
       namedSeg = defSeg.replace(/(\S+)/, '{ $1 }')
@@ -80,6 +78,7 @@ function replacement(match, defSeg, defName, namedSeg, fromSeg, sd, ld) {
 }
 
 /**
+ * Returns path to stdlib, if it was configured.
  * @param {string} file Relative path to the current file
  * @param {string} src Path to import.
  * @param {Object} [config] ÀLaMode configuration.
@@ -98,6 +97,10 @@ const getStdlib = (file, src, config = {}) => {
   return null
 }
 
+/**
+ * The rules can be async (for building), or sync (for require hook).
+ * This is the common method that returns actual replacement.
+ */
 const finish = (namedSeg, fromSeg, defSeg, defName, quotes, source, isLocal) => {
   const { t, ifES } = getDef(defSeg, defName, quotes, source, isLocal)
   const replacedNamed = getNamed(namedSeg, fromSeg, quotes, source, defName)

@@ -2,7 +2,7 @@ import ÀLaContext from '@a-la/context'
 import makeTestSuite from '@zoroaster/mask'
 import rule from '../../src'
 
-export default makeTestSuite('test/result/config/replacement.md', {
+export default makeTestSuite('test/result/config/replacement', {
   context: [ÀLaContext, {
     import: {
       replacement: {
@@ -16,6 +16,26 @@ export default makeTestSuite('test/result/config/replacement.md', {
    */
   async getResults({ stream, setConfig }, config) {
     setConfig(config)
+    const { result } = await stream(rule, this.input)
+    return result
+  },
+})
+
+export const rename = makeTestSuite('test/result/config/rename', {
+  context: [ÀLaContext, {
+    import: {
+      replacement: {
+        from: '^((../)+)src',
+        to: '$1build',
+      },
+    },
+  }],
+  /**
+   * @param {ÀLaContext} param1
+   */
+  async getResults({ stream, setConfig, setProps }, config) {
+    setConfig(config)
+    setProps({ renameOnly: true })
     const { result } = await stream(rule, this.input)
     return result
   },

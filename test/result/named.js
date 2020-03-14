@@ -19,13 +19,6 @@ import { test } from "test"
 const { test } = require("test");
 /**/
 
-// standard with literals
-import { test } from `test`
-
-/* expected */
-const { test } = require(`test`);
-/**/
-
 // standard with scope
 import { test } from '@scope/test'
 

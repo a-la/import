@@ -2,19 +2,19 @@
 import test from "../../src/lib"
 
 /* expected */
-const test = require("../../build/lib");
+import test from "../../build/lib"
 /**/
 
 ## replaces blank paths
 import "../../src/lib"
 
 /* expected */
-require("../../build/lib");
+import "../../build/lib"
 /**/
 
 ## replaces import as
 import * as test from "../../src/lib"
 
 /* expected */
-const test = require("../../build/lib");
+import * as test from "../../build/lib"
 /**/

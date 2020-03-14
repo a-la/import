@@ -1,6 +1,6 @@
 import { getSource } from './'
 
-const fromRe = /(%%_RESTREAM_STRINGS_REPLACEMENT_(\d+)_%%|%%_RESTREAM_LITERALS_REPLACEMENT_(\d+)_%%)/
+const fromRe = /(%%_RESTREAM_STRINGS_REPLACEMENT_(\d+)_%%)/
 
 const importRe = /(import\s+)/
 
@@ -22,10 +22,15 @@ function replacement(match, Import, _, sd) {
   const [, quotes, src] = /** @type {!RegExpResult} */(
     /(["'`])(.+?)\1/.exec(realSrc)
   )
+  const source = getSource(src, this.config)
+
+  if (this.renameOnly) {
+    const renamed = getSource(src, this.config)
+    return match.replace(/%%_RESTREAM_STRINGS_REPLACEMENT_\d+_%%/, `${quotes}${renamed}${quotes}`)
+  }
 
   let rr = Import.replace(/ /g, '').replace('import', 'require(')
 
-  const source = getSource(src, this.config)
 
   rr += `${quotes}${source}${quotes});`
   return rr
