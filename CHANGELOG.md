@@ -1,3 +1,10 @@
+## 14 March 2020
+
+### [1.12.0](https://github.com/a-la/import/compare/v1.11.0...v1.12.0)
+
+- [feature] Read `renameOnly` property of the stream.
+- [fix] Assume no template literals are used for imports (which doesn't work in browsers).
+
 ## 10 February 2020
 
 ### [1.11.0](https://github.com/a-la/import/compare/v1.10.2...v1.11.0)
